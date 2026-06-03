@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZimLive | Your Life. Unified.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&amp;family=Syne:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        .phone-screen-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: cover;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(217, 232, 226, 0.6);
+        }
+
+        /* Subtle grain texture */
+        .bg-grain {
+            position: relative;
+        }
+        .bg-grain::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(108, 217, 193, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 0%, rgba(254, 210, 87, 0.1) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(0, 104, 88, 0.05) 0px, transparent 50%);
+        }
+
+        /* Expressive Headings */
+        .heading-tight {
+            letter-spacing: -0.04em;
+        }
+    </style>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#745a00",
+                      "mint-surface": "#f7fcfa",
+                      "inverse-on-surface": "#dff6ed",
+                      "surface-container-high": "#d6ede5",
+                      "on-error-container": "#93000a",
+                      "outline": "#6d7a75",
+                      "mint-bg": "#e9fbf4",
+                      "on-primary": "#ffffff",
+                      "surface": "#e7fff6",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#f4fffa",
+                      "on-surface-variant": "#3d4946",
+                      "border-line": "#d9e8e2",
+                      "inverse-primary": "#6cd9c1",
+                      "surface-dim": "#c8dfd7",
+                      "on-secondary-fixed": "#241a00",
+                      "on-primary-fixed-variant": "#005144",
+                      "on-surface": "#0b1f1a",
+                      "surface-container": "#dcf3ea",
+                      "primary-container": "#008470",
+                      "surface-container-low": "#e2f9f0",
+                      "primary-fixed": "#89f6dd",
+                      "on-tertiary-fixed-variant": "#134f46",
+                      "tertiary-fixed": "#b4eee1",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#fed257",
+                      "primary": "#006858",
+                      "on-tertiary-fixed": "#00201b",
+                      "background": "#e7fff6",
+                      "surface-container-lowest": "#ffffff",
+                      "muted-gray": "#667970",
+                      "on-background": "#0b1f1a",
+                      "secondary": "#755b00",
+                      "surface-bright": "#e7fff6",
+                      "error-red": "#a91216",
+                      "outline-variant": "#bcc9c4",
+                      "secondary-fixed": "#ffdf90",
+                      "surface-container-highest": "#d1e8df",
+                      "secondary-fixed-dim": "#ecc248",
+                      "surface-tint": "#006b5b",
+                      "on-primary-fixed": "#00201a",
+                      "tertiary-fixed-dim": "#99d2c5",
+                      "tertiary-container": "#477e74",
+                      "primary-fixed-dim": "#6cd9c1",
+                      "on-error": "#ffffff",
+                      "tertiary": "#2d655b",
+                      "surface-variant": "#d1e8df",
+                      "on-secondary-fixed-variant": "#584400",
+                      "on-tertiary-container": "#f4fffb",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#20342f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.5rem",
+                      "lg": "0.75rem",
+                      "xl": "1rem",
+                      "2xl": "1.5rem",
+                      "3xl": "2rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "section-v-md": "80px",
+                      "gap-component": "24px",
+                      "gutter-mobile": "24px",
+                      "gap-grid": "32px",
+                      "gutter-desktop": "40px",
+                      "section-v-lg": "120px",
+                      "container-max": "1200px"
+              },
+              "fontFamily": {
+                      "nav-link": ["DM Sans", "sans-serif"],
+                      "label-sm": ["DM Sans", "sans-serif"],
+                      "eyebrow": ["DM Sans", "sans-serif"],
+                      "micro": ["DM Sans", "sans-serif"],
+                      "headline-md": ["Syne", "sans-serif"],
+                      "body-md": ["DM Sans", "sans-serif"],
+                      "headline-sm": ["Syne", "sans-serif"],
+                      "display-lg": ["Syne", "sans-serif"],
+                      "body-lg": ["DM Sans", "sans-serif"],
+                      "display-lg-mobile": ["Syne", "sans-serif"]
+              },
+              "fontSize": {
+                      "nav-link": ["15px", {"lineHeight": "1", "fontWeight": "700"}],
+                      "label-sm": ["13px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "eyebrow": ["14px", {"lineHeight": "1", "letterSpacing": "0.12em", "fontWeight": "800"}],
+                      "micro": ["11px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "headline-md": ["44px", {"lineHeight": "1.05", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "1.75", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "800"}],
+                      "display-lg": ["80px", {"lineHeight": "0.95", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.8", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "display-lg-mobile": ["52px", {"lineHeight": "1.05", "letterSpacing": "-0.03em", "fontWeight": "800"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-mint-bg text-on-surface selection:bg-primary/20 bg-grain font-body-md">
+<!-- Header / TopNavBar -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-xl bg-white/80 border-b border-border-line/40 transition-all duration-300">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop h-20">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="text-white font-bold text-xl font-headline-sm">Z</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[22px] font-bold text-primary leading-tight tracking-tight">ZimLive</span>
+<span class="font-micro text-[9px] text-muted-gray uppercase tracking-[0.25em] font-extrabold opacity-70 -mt-0.5">Together We Are</span>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-10">
+<a class="font-nav-link text-nav-link text-primary border-b-2 border-primary pb-1" href="#">Features</a>
+<a class="font-nav-link text-nav-link text-on-surface-variant hover:text-primary transition-all" href="#">Community</a>
+<a class="font-nav-link text-nav-link text-on-surface-variant hover:text-primary transition-all" href="#">Download</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="hidden md:block font-label-sm text-label-sm text-primary hover:bg-primary-container/10 px-4 py-2.5 rounded-lg transition-all" href="#">Log in</a>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-6 py-3 rounded-lg shadow-md hover:translate-y-[-1px] hover:shadow-lg active:scale-95 transition-all duration-200">Get started</button>
+</div>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden pt-section-v-md md:pt-section-v-lg pb-section-v-lg mesh-gradient">
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div class="z-10 text-center lg:text-left">
+<span class="font-eyebrow text-eyebrow text-primary uppercase block mb-6">Dare To Connect. Dare To Thrive.</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-8 text-on-surface heading-tight">
+                    Your Life.<br/><span class="text-primary">Unified.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-muted-gray mb-10 max-w-xl mx-auto lg:mx-0">
+                    Messaging, social, banking, and marketplace — seamlessly integrated into one powerful platform. Built for the continent, by the continent.
+                </p>
+<div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-14">
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-8 py-4.5 rounded-xl flex items-center justify-center gap-2 hover:translate-y-[-3px] hover:shadow-xl hover:shadow-primary/30 transition-all shadow-lg shadow-primary/20">
+                        Get started free
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-surface-container-lowest border border-border-line text-on-surface font-label-sm text-label-sm px-8 py-4.5 rounded-xl hover:bg-mint-bg hover:translate-y-[-1px] transition-all shadow-sm">
+                        Request beta access
+                    </button>
+</div>
+<div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+<div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm border border-border-line rounded-full shadow-sm hover:shadow-md transition-all cursor-default">
+<span class="material-symbols-outlined text-primary text-[20px] font-bold">verified_user</span>
+<span class="font-label-sm text-on-surface-variant font-bold">Bank-grade security</span>
+</div>
+<div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm border border-border-line rounded-full shadow-sm hover:shadow-md transition-all cursor-default">
+<span class="material-symbols-outlined text-primary text-[20px] font-bold">groups</span>
+<span class="font-label-sm text-on-surface-variant font-bold">100K+ active users</span>
+</div>
+<div class="flex items-center gap-2.5 px-5 py-2.5 bg-white/60 backdrop-blur-sm border border-border-line rounded-full shadow-sm hover:shadow-md transition-all cursor-default">
+<span class="material-symbols-outlined text-primary text-[20px] font-bold">devices</span>
+<span class="font-label-sm text-on-surface-variant font-bold">Cross-platform</span>
+</div>
+</div>
+</div>
+<!-- Animated App Feature -->
+<div class="relative flex justify-center items-center">
+<div class="absolute inset-0 bg-primary/10 blur-[120px] rounded-full scale-90 animate-pulse"></div>
+<!-- iPhone Frame -->
+<div class="relative w-[300px] h-[610px] md:w-[330px] md:h-[680px] bg-[#0A0A0A] rounded-[3.5rem] p-3.5 shadow-[0_50px_100px_-20px_rgba(0,104,88,0.3)] border-[6px] border-[#222]">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-[#0A0A0A] rounded-b-3xl z-20 flex items-center justify-center">
+<div class="w-12 h-1.5 bg-white/10 rounded-full"></div>
+</div>
+<div class="phone-screen-container relative w-full h-full bg-black rounded-[2.8rem] overflow-hidden">
+<img alt="ZimLive Dashboard" class="phone-screen opacity-100 translate-x-0" id="screen-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtP59rd3CDTq1lLaPyhKw09JDFR0d2Ieo26ure2MXiBZXJYIc7z79-fYdlYZH1GQ970XjXnXMnlxMIBMIbNPAef-rASeGS78x1_nRhrLpkeIQlzQXurhJ_VthuUPItOQQnanSt8aK29nS6pwlAXx7EKzhS66crfXjLUt0cykSBSX3mo0V2EapkChlhuyb7P5_CBaZpyfxgZtPJWRM5Shh1tyHMwkqPqNL27yLjJA-JpJr_FRfN-txnmOrXeok2h9MMBcA5I8OEqNdh"/>
+<img alt="Notices" class="phone-screen opacity-0 translate-x-full" id="screen-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7cMMcqno7Er9OiR32_mpXY4g-9T78xaFqPtX9Gg0NaVpDr7Ujc0z1ui5zoahMJXiKJ1SDFELGgyWxOtqfsXHjf6WrAaxOk73BoqHSKlMtb6UfErhbJJcs-z6UxffoW0tx6CykLOCLO7US14NGFTZPL-OXhLJYpkpclVEuZeiz61a0HMH1gYy-DQgVZhNQU2dMsMtLTr3VPiUFvkvruEM277wXTN2tUoqIelqUB_vo0Q5cCwFRSEb3DNlQ-tyGfxKLzxHXSnHoLMw"/>
+<img alt="Trust" class="phone-screen opacity-0 translate-x-full" id="screen-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnyKaBn1Idxyj8pyo5clsdDgEKdQXO2AphZi6p4NJHEgJ2VZHsf1oJWH_55fyy-lvjhOS9aEod9Qgl3a2vLmCjKQTTuEwBLNGoLKhGYGnXVN8KJB8hVbzklJjj3Uaf43IwVkpXsIRRGGCWBpPD1SePk7vFQbsLEv11gmINPr3V9-fSExBHCxgVt3o9eBOk7QksnTEKAL_RjMoZtxSBN4lB6kpZOhIUhSJUujgzxPyUDkL3md0FU6rUiAQlXrlApvTGZr8BFV-tz3Vs"/>
+<img alt="AI Copilot" class="phone-screen opacity-0 translate-x-full" id="screen-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWJSTPXXMuorMYOFArTrEZwZWE_iAmZwPcmOqb38PR7PWwRPoRIlxrH7mv6fbRocNdhfmpdVJtY9jd45AJB-y3-Fvxl24fQFCkDJ-7pBrUy6PcxFEVm_0hIZBxmRRhf4_WNKQN1lmPDugYNlMMK_3qy-DzHQPEueEGTFprmArBoQhAcMdcWdOR-2ZI6gpNX80pztg4LeI90Ja46wOg9Wb6zTchaqw34_MvQuBUkT7GkrRhFB1DmmAtIeyog3XdwE9Y08Jw-2GDgfr2"/>
+</div>
+</div>
+<!-- Floating Elements -->
+<div class="absolute top-12 -right-12 animate-float glass-card px-6 py-4.5 rounded-2xl shadow-xl border border-border-line hidden md:flex items-center gap-4">
+<div class="w-11 h-11 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary font-bold">sync</span>
+</div>
+<div>
+<p class="text-micro text-muted-gray uppercase tracking-widest mb-0.5">Mobile + Web</p>
+<p class="font-nav-link text-primary">Synced live</p>
+</div>
+</div>
+<div class="absolute bottom-24 -left-16 animate-float glass-card px-6 py-4.5 rounded-2xl shadow-xl border border-border-line hidden md:flex items-center gap-4" style="animation-delay: 2s;">
+<div class="w-11 h-11 bg-secondary-container/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary font-bold">payments</span>
+</div>
+<div>
+<p class="text-micro text-muted-gray uppercase tracking-widest mb-0.5">ZimWallet</p>
+<p class="font-nav-link text-secondary">Secure payments</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Grid Section -->
+<section class="bg-surface-container-lowest py-section-v-lg relative">
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md mb-6 heading-tight">Everything you need.<br/><span class="text-primary">One app. Infinite possibilities.</span></h2>
+<p class="text-muted-gray font-body-lg max-w-2xl mx-auto">ZimLive combines local context with global standards to provide the most secure and powerful social-finance toolkit ever built for Zimbabwe.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<!-- Messaging -->
+<div class="bg-white p-10 rounded-2xl border border-border-line/60 group hover:shadow-2xl hover:shadow-primary/5 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-mint-bg rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:text-white transition-colors">chat_bubble</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 tracking-tight">Instant Messaging</h3>
+<p class="text-muted-gray font-body-md leading-relaxed">Lightning-fast, end-to-end encrypted chats for personal and professional connections with full media sharing.</p>
+</div>
+<!-- Social Feed -->
+<div class="bg-white p-10 rounded-2xl border border-border-line/60 group hover:shadow-2xl hover:shadow-primary/5 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-mint-bg rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:text-white transition-colors">explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 tracking-tight">Social Feed</h3>
+<p class="text-muted-gray font-body-md leading-relaxed">Stay updated with what matters in your community with our curated, localized social experience built for transparency.</p>
+</div>
+<!-- Business Hub -->
+<div class="bg-white p-10 rounded-2xl border border-border-line/60 group hover:shadow-2xl hover:shadow-primary/5 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-mint-bg rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:text-white transition-colors">business_center</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 tracking-tight">Business Hub</h3>
+<p class="text-muted-gray font-body-md leading-relaxed">Scale your enterprise with professional tools for merchants, digital storefronts, and service providers.</p>
+</div>
+<!-- ZimWallet -->
+<div class="bg-white p-10 rounded-2xl border border-border-line/60 group hover:shadow-2xl hover:shadow-primary/5 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-mint-bg rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary text-[32px] group-hover:text-white transition-colors">account_balance_wallet</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 tracking-tight">ZimWallet</h3>
+<p class="text-muted-gray font-body-md leading-relaxed">A social wallet that lets you pay, receive, and manage funds with zero friction and bank-grade encryption.</p>
+</div>
+<!-- ZimAI Assistant -->
+<div class="bg-white p-10 rounded-2xl border border-border-line/60 group hover:shadow-2xl hover:shadow-secondary/5 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-secondary-container/10 rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-secondary transition-colors">
+<span class="material-symbols-outlined text-secondary text-[32px] group-hover:text-white transition-colors">smart_toy</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 tracking-tight">ZimAI Assistant</h3>
+<p class="text-muted-gray font-body-md leading-relaxed">Get instant help, translations, and business insights from our localized AI tailored for the Zimbabwean market.</p>
+</div>
+<!-- Community -->
+<div class="bg-primary p-10 rounded-2xl group hover:shadow-2xl hover:shadow-primary/20 hover:translate-y-[-4px] transition-all duration-300">
+<div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
+<span class="material-symbols-outlined text-white text-[32px]">diversity_3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4 text-white tracking-tight">Community</h3>
+<p class="text-white/80 font-body-md leading-relaxed">Join active groups, find local events, and connect with visionaries who share your passion for growth.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Ecosystem Flow Section -->
+<section class="py-section-v-lg bg-mint-bg overflow-hidden">
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+<div class="lg:col-span-5 order-2 lg:order-1">
+<h2 class="font-headline-md text-headline-md mb-8 heading-tight">A Social Feed That<br/><span class="text-primary">Moves With You.</span></h2>
+<p class="text-muted-gray font-body-lg mb-10 leading-relaxed">Share moments, trade products, and grow your network in a safe, moderated space designed specifically for the Zimbabwean digital lifestyle.</p>
+<div class="space-y-6">
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary font-bold">person_check</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[19px] mb-1 font-bold tracking-tight">Identity Verified</h4>
+<p class="text-muted-gray font-body-md">No bots, real people only. Trusted interactions every time.</p>
+</div>
+</div>
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary font-bold">translate</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[19px] mb-1 font-bold tracking-tight">Native Language Support</h4>
+<p class="text-muted-gray font-body-md">Full native support for seamless communication across the region.</p>
+</div>
+</div>
+<div class="flex gap-5 group">
+<div class="flex-shrink-0 w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-sm group-hover:shadow-md transition-all">
+<span class="material-symbols-outlined text-primary font-bold">data_usage</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-[19px] mb-1 font-bold tracking-tight">Zero-Data Ready</h4>
+<p class="text-muted-gray font-body-md">Optimized performance with zero-data mode for basic chat features.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 order-1 lg:order-2">
+<div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-border-line/60">
+<div class="p-8 border-b border-border-line/40">
+<div class="flex gap-5">
+<div class="w-14 h-14 rounded-full bg-primary-container overflow-hidden ring-4 ring-mint-bg">
+<img alt="user" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJWnWYrjzax26y2bSe4CSlFdusLQT20rZl8lxBMTX_bnpUnWArrR3v6fsRLkE3CmUcMsXHcDD4C-Nt3kfICMdlOX8ZroMsDaWPDLvJiIisw0I5_7cKHokUYmDw-mJXt7GTQdF9CHQuQhbOyJ2OjEPynfWaUk2tkzaTYX0d6kPsGVJkfQrcSDdAmFYHco77Wwu5QQXDY0sFgIL2jh33VpcDQKRsyahfNs-lb7bULGNlx1bIjFZW855gjpywWzyLq1RSTG_GJmT5_0qK"/>
+</div>
+<div class="flex-1">
+<textarea class="w-full border-none focus:ring-0 font-body-md text-on-surface resize-none h-28 pt-2" placeholder="What's happening in your neighborhood?"></textarea>
+<div class="flex justify-between items-center mt-4 border-t border-border-line/30 pt-4">
+<div class="flex gap-5">
+<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">image</span>
+<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">gif_box</span>
+<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">mood</span>
+</div>
+<div class="flex items-center gap-5">
+<span class="text-micro text-muted-gray hidden sm:inline italic">2000 characters left</span>
+<button class="bg-primary text-white font-label-sm px-8 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all font-bold">Post</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mock Post -->
+<div class="p-8 bg-mint-surface/50">
+<div class="flex gap-5 mb-5">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center font-bold text-on-secondary-container ring-4 ring-white shadow-sm font-syne">RM</div>
+<div>
+<p class="font-nav-link text-on-surface">Ropa M. <span class="text-muted-gray font-normal text-sm ml-3 italic">2 hours ago</span></p>
+<p class="font-body-md mt-2 leading-relaxed">Just launched my organic honey store on ZimLive Marketplace! Check it out if you're in Harare. Special discounts for our community members. 🍯✨</p>
+</div>
+</div>
+<div class="flex items-center gap-10 pl-16">
+<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">favorite</span>
+<span class="font-label-sm font-bold">142</span>
+</button>
+<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">chat_bubble</span>
+<span class="font-label-sm font-bold">28</span>
+</button>
+<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px] hover:scale-110 transition-transform">share</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-section-v-lg bg-on-background text-white relative overflow-hidden bg-grain">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -skew-x-12 translate-x-1/2"></div>
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop relative z-10">
+<div class="text-center mb-20">
+<h2 class="font-headline-md text-headline-md mb-6 heading-tight">Join a thriving ecosystem.</h2>
+<p class="text-white/60 font-body-lg max-w-2xl mx-auto">The numbers speak for themselves. ZimLive is the fastest growing digital platform in the region.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center" id="stats-container">
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+<p class="font-display-lg text-[48px] md:text-[64px] text-primary mb-2 heading-tight"><span class="stat-counter" data-target="100000">0</span><span class="text-primary">K+</span></p>
+<p class="font-eyebrow text-[11px] text-white/50 uppercase tracking-[0.25em]">Active users</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+<p class="font-display-lg text-[48px] md:text-[64px] text-secondary-container mb-2 heading-tight"><span class="stat-counter" data-target="50000">0</span><span class="text-secondary-container">K+</span></p>
+<p class="font-eyebrow text-[11px] text-white/50 uppercase tracking-[0.25em]">Messages daily</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+<p class="font-display-lg text-[48px] md:text-[64px] text-primary mb-2 heading-tight"><span class="stat-counter" data-target="10000">0</span><span class="text-primary">K+</span></p>
+<p class="font-eyebrow text-[11px] text-white/50 uppercase tracking-[0.25em]">Verified Shops</p>
+</div>
+<div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+<p class="font-display-lg text-[48px] md:text-[64px] text-secondary-container mb-2 heading-tight"><span class="text-secondary-container">$</span><span class="stat-counter" data-target="1000000">0</span><span class="text-secondary-container">M+</span></p>
+<p class="font-eyebrow text-[11px] text-white/50 uppercase tracking-[0.25em]">Processed</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-v-lg">
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop">
+<div class="bg-gradient-to-br from-primary via-primary to-primary-container rounded-3xl p-12 md:p-28 text-center text-white shadow-2xl relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-container/20 rounded-full blur-[100px] group-hover:scale-125 transition-transform duration-1000"></div>
+<div class="relative z-10">
+<h2 class="font-display-lg-mobile md:font-display-lg text-[44px] md:text-[72px] mb-8 heading-tight">Ready for the<br/>future?</h2>
+<p class="font-body-lg text-white/80 mb-14 max-w-xl mx-auto leading-relaxed">Join the waitlist today and be among the first to experience the future of African-tech unified living.</p>
+<div class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+<input class="flex-1 rounded-2xl border-none px-8 py-5 text-on-surface focus:ring-4 focus:ring-secondary-container/40 placeholder:text-muted-gray/60 font-body-md" placeholder="Enter your email" type="email"/>
+<button class="bg-secondary-container text-on-secondary-container font-nav-link text-nav-link px-10 py-5 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-black/20 active:scale-95 transition-all font-bold">Join Waitlist</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-section-v-md md:py-section-v-lg bg-surface-container-lowest border-t border-border-line/40">
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop grid grid-cols-1 md:grid-cols-12 gap-16">
+<div class="md:col-span-4">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-md">
+<span class="text-white font-bold text-xl font-headline-sm">Z</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-[22px] font-bold text-primary leading-tight tracking-tight">ZimLive</span>
+<span class="font-micro text-[9px] text-muted-gray uppercase tracking-[0.25em] font-extrabold opacity-70 -mt-0.5">Together We Are</span>
+</div>
+</div>
+<p class="font-body-md text-muted-gray mb-8 leading-relaxed max-w-sm">Empowering communities through unified digital experiences. Built with pride for Zimbabwe.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-125 transition-transform">social_leaderboard</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-125 transition-transform">public</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-125 transition-transform">share</span>
+</div>
+</div>
+<div class="md:col-span-2">
+<h4 class="font-eyebrow text-micro uppercase tracking-[0.2em] text-on-surface mb-8 font-extrabold">Product</h4>
+<ul class="space-y-5">
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Features</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Wallet</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Marketplace</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Business</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-eyebrow text-micro uppercase tracking-[0.2em] text-on-surface mb-8 font-extrabold">Company</h4>
+<ul class="space-y-5">
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">About Us</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Privacy Policy</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Terms of Service</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Help Center</a></li>
+</ul>
+</div>
+<div class="md:col-span-3">
+<h4 class="font-eyebrow text-micro uppercase tracking-[0.2em] text-on-surface mb-8 font-extrabold">Connect</h4>
+<ul class="space-y-5">
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Community</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Waitlist</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">Twitter</a></li>
+<li><a class="text-muted-gray hover:text-primary transition-colors font-label-sm font-bold" href="#">LinkedIn</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter-mobile md:px-gutter-desktop mt-20 pt-10 border-t border-border-line/40 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col md:flex-row items-center gap-1 md:gap-4">
+<p class="font-label-sm text-muted-gray">© 2026 ZimLive. Together We Are. Powered by O'Riley Foundation</p>
+</div>
+<div class="flex gap-10">
+<span class="text-muted-gray font-label-sm italic">Zimbabwe</span>
+</div>
+</div>
+</footer>
+<script>
+    let currentScreenIdx = 0;
+    const totalScreens = 4;
+
+    function cyclePhoneScreens() {
+        for (let i = 0; i < totalScreens; i++) {
+            const screen = document.getElementById(`screen-${i}`);
+            if (i === currentScreenIdx) {
+                screen.classList.remove('opacity-0', 'translate-x-full', '-translate-x-full');
+                screen.classList.add('opacity-100', 'translate-x-0');
+            } else if (i === (currentScreenIdx - 1 + totalScreens) % totalScreens) {
+                screen.classList.remove('opacity-100', 'translate-x-0', 'translate-x-full');
+                screen.classList.add('opacity-0', '-translate-x-full');
+            } else {
+                screen.classList.remove('opacity-100', 'translate-x-0', '-translate-x-full');
+                screen.classList.add('opacity-0', 'translate-x-full');
+            }
+        }
+        currentScreenIdx = (currentScreenIdx + 1) % totalScreens;
+    }
+
+    setInterval(cyclePhoneScreens, 4000);
+
+    // Counter Animation Logic
+    const statsContainer = document.getElementById('stats-container');
+    const counters = document.querySelectorAll('.stat-counter');
+    let animated = false;
+
+    function animateCounters() {
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const duration = 2000; // 2 seconds animation
+            const stepTime = Math.abs(Math.floor(duration / (target / 100)));
+            let current = 0;
+            
+            // Format for display (K or M based on target)
+            const isMillion = target >= 1000000;
+            const displayDivisor = isMillion ? 1000000 : 1000;
+            const targetDisplay = target / displayDivisor;
+            
+            const timer = setInterval(() => {
+                current += target / 100;
+                if (current >= target) {
+                    counter.innerText = targetDisplay;
+                    clearInterval(timer);
+                } else {
+                    counter.innerText = Math.floor(current / displayDivisor);
+                }
+            }, 20);
+        });
+    }
+
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.id === 'stats-container' && !animated) {
+                    animateCounters();
+                    animated = true;
+                }
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-12');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section, #stats-container').forEach(el => {
+        if (!el.classList.contains('stat-counter')) {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12');
+            observer.observe(el);
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('py-2', 'bg-white/95', 'shadow-md');
+            nav.classList.remove('bg-white/80');
+        } else {
+            nav.classList.remove('py-2', 'bg-white/95', 'shadow-md');
+            nav.classList.add('bg-white/80');
+        }
+    });
+</script>
+</body></html>
