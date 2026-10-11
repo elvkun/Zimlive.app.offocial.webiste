@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7fcfa"/>
+      <stop offset="1" stop-color="#dff6ed"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="74" y="72" width="70" height="70" rx="18" fill="#006858"/>
+  <path d="M103 83h23a27 27 0 0 1 10 52l18 16h-19l-25-21v21H96V83h7zm7 17v18h17a9 9 0 0 0 0-18h-17z" fill="#fff"/>
+  <text x="74" y="230" fill="#0b1f1a" font-family="Arial,sans-serif" font-size="68" font-weight="700">Ryvo</text>
+  <text x="74" y="304" fill="#006858" font-family="Arial,sans-serif" font-size="38" font-weight="600">Cross-platform product preview</text>
+  <text x="74" y="370" fill="#3d4946" font-family="Arial,sans-serif" font-size="28">Android prototype · iOS and web starters · Shared services planned</text>
+</svg>

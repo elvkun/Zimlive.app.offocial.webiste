@@ -5,6 +5,14 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Ryvo | Your Life. Unified.</title>
 <meta name="description" content="A cross-platform community product direction from O’Riley Foundation, with Android, iOS, web, and shared backend services planned together."/>
+<link rel="canonical" href="https://www.zimlive.app/"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<meta name="theme-color" content="#e7fff6"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Ryvo | Cross-platform product preview"/>
+<meta property="og:description" content="Explore Ryvo’s Android prototype, iOS and web starters, and planned shared backend architecture."/>
+<meta property="og:url" content="https://www.zimlive.app/"/>
+<meta property="og:image" content="https://www.zimlive.app/social-preview.svg"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;0,800;1,400&amp;family=Syne:wght@700;800&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -58,6 +66,20 @@
         /* Expressive Headings */
         .heading-tight {
             letter-spacing: -0.04em;
+        }
+
+        :focus-visible {
+            outline: 3px solid #006858;
+            outline-offset: 4px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 <!-- Tailwind Config -->
@@ -236,10 +258,10 @@
 <div class="w-12 h-1.5 bg-white/10 rounded-full"></div>
 </div>
 <div class="phone-screen-container relative w-full h-full bg-black rounded-[2.8rem] overflow-hidden">
-<img alt="Ryvo interface preview" class="phone-screen opacity-100 translate-x-0" id="screen-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtP59rd3CDTq1lLaPyhKw09JDFR0d2Ieo26ure2MXiBZXJYIc7z79-fYdlYZH1GQ970XjXnXMnlxMIBMIbNPAef-rASeGS78x1_nRhrLpkeIQlzQXurhJ_VthuUPItOQQnanSt8aK29nS6pwlAXx7EKzhS66crfXjLUt0cykSBSX3mo0V2EapkChlhuyb7P5_CBaZpyfxgZtPJWRM5Shh1tyHMwkqPqNL27yLjJA-JpJr_FRfN-txnmOrXeok2h9MMBcA5I8OEqNdh"/>
-<img alt="Notices" class="phone-screen opacity-0 translate-x-full" id="screen-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7cMMcqno7Er9OiR32_mpXY4g-9T78xaFqPtX9Gg0NaVpDr7Ujc0z1ui5zoahMJXiKJ1SDFELGgyWxOtqfsXHjf6WrAaxOk73BoqHSKlMtb6UfErhbJJcs-z6UxffoW0tx6CykLOCLO7US14NGFTZPL-OXhLJYpkpclVEuZeiz61a0HMH1gYy-DQgVZhNQU2dMsMtLTr3VPiUFvkvruEM277wXTN2tUoqIelqUB_vo0Q5cCwFRSEb3DNlQ-tyGfxKLzxHXSnHoLMw"/>
-<img alt="Trust" class="phone-screen opacity-0 translate-x-full" id="screen-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnyKaBn1Idxyj8pyo5clsdDgEKdQXO2AphZi6p4NJHEgJ2VZHsf1oJWH_55fyy-lvjhOS9aEod9Qgl3a2vLmCjKQTTuEwBLNGoLKhGYGnXVN8KJB8hVbzklJjj3Uaf43IwVkpXsIRRGGCWBpPD1SePk7vFQbsLEv11gmINPr3V9-fSExBHCxgVt3o9eBOk7QksnTEKAL_RjMoZtxSBN4lB6kpZOhIUhSJUujgzxPyUDkL3md0FU6rUiAQlXrlApvTGZr8BFV-tz3Vs"/>
-<img alt="AI Copilot" class="phone-screen opacity-0 translate-x-full" id="screen-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWJSTPXXMuorMYOFArTrEZwZWE_iAmZwPcmOqb38PR7PWwRPoRIlxrH7mv6fbRocNdhfmpdVJtY9jd45AJB-y3-Fvxl24fQFCkDJ-7pBrUy6PcxFEVm_0hIZBxmRRhf4_WNKQN1lmPDugYNlMMK_3qy-DzHQPEueEGTFprmArBoQhAcMdcWdOR-2ZI6gpNX80pztg4LeI90Ja46wOg9Wb6zTchaqw34_MvQuBUkT7GkrRhFB1DmmAtIeyog3XdwE9Y08Jw-2GDgfr2"/>
+<img alt="Ryvo interface preview" aria-hidden="false" class="phone-screen opacity-100 translate-x-0" id="screen-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtP59rd3CDTq1lLaPyhKw09JDFR0d2Ieo26ure2MXiBZXJYIc7z79-fYdlYZH1GQ970XjXnXMnlxMIBMIbNPAef-rASeGS78x1_nRhrLpkeIQlzQXurhJ_VthuUPItOQQnanSt8aK29nS6pwlAXx7EKzhS66crfXjLUt0cykSBSX3mo0V2EapkChlhuyb7P5_CBaZpyfxgZtPJWRM5Shh1tyHMwkqPqNL27yLjJA-JpJr_FRfN-txnmOrXeok2h9MMBcA5I8OEqNdh"/>
+<img alt="Notices" aria-hidden="true" class="phone-screen opacity-0 translate-x-full" id="screen-1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi7cMMcqno7Er9OiR32_mpXY4g-9T78xaFqPtX9Gg0NaVpDr7Ujc0z1ui5zoahMJXiKJ1SDFELGgyWxOtqfsXHjf6WrAaxOk73BoqHSKlMtb6UfErhbJJcs-z6UxffoW0tx6CykLOCLO7US14NGFTZPL-OXhLJYpkpclVEuZeiz61a0HMH1gYy-DQgVZhNQU2dMsMtLTr3VPiUFvkvruEM277wXTN2tUoqIelqUB_vo0Q5cCwFRSEb3DNlQ-tyGfxKLzxHXSnHoLMw"/>
+<img alt="Trust" aria-hidden="true" class="phone-screen opacity-0 translate-x-full" id="screen-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnyKaBn1Idxyj8pyo5clsdDgEKdQXO2AphZi6p4NJHEgJ2VZHsf1oJWH_55fyy-lvjhOS9aEod9Qgl3a2vLmCjKQTTuEwBLNGoLKhGYGnXVN8KJB8hVbzklJjj3Uaf43IwVkpXsIRRGGCWBpPD1SePk7vFQbsLEv11gmINPr3V9-fSExBHCxgVt3o9eBOk7QksnTEKAL_RjMoZtxSBN4lB6kpZOhIUhSJUujgzxPyUDkL3md0FU6rUiAQlXrlApvTGZr8BFV-tz3Vs"/>
+<img alt="AI Copilot" aria-hidden="true" class="phone-screen opacity-0 translate-x-full" id="screen-3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWJSTPXXMuorMYOFArTrEZwZWE_iAmZwPcmOqb38PR7PWwRPoRIlxrH7mv6fbRocNdhfmpdVJtY9jd45AJB-y3-Fvxl24fQFCkDJ-7pBrUy6PcxFEVm_0hIZBxmRRhf4_WNKQN1lmPDugYNlMMK_3qy-DzHQPEueEGTFprmArBoQhAcMdcWdOR-2ZI6gpNX80pztg4LeI90Ja46wOg9Wb6zTchaqw34_MvQuBUkT7GkrRhFB1DmmAtIeyog3XdwE9Y08Jw-2GDgfr2"/>
 </div>
 </div>
 <!-- Floating Elements -->
@@ -362,21 +384,23 @@
 <div class="lg:col-span-7 order-1 lg:order-2">
 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-border-line/60">
 <div class="p-8 border-b border-border-line/40">
+<p class="sr-only" id="composer-preview-note">Preview only. Posting, media uploads, and reactions are not connected.</p>
 <div class="flex gap-5">
 <div class="w-14 h-14 rounded-full bg-primary-container overflow-hidden ring-4 ring-mint-bg">
 <img alt="user" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJWnWYrjzax26y2bSe4CSlFdusLQT20rZl8lxBMTX_bnpUnWArrR3v6fsRLkE3CmUcMsXHcDD4C-Nt3kfICMdlOX8ZroMsDaWPDLvJiIisw0I5_7cKHokUYmDw-mJXt7GTQdF9CHQuQhbOyJ2OjEPynfWaUk2tkzaTYX0d6kPsGVJkfQrcSDdAmFYHco77Wwu5QQXDY0sFgIL2jh33VpcDQKRsyahfNs-lb7bULGNlx1bIjFZW855gjpywWzyLq1RSTG_GJmT5_0qK"/>
 </div>
 <div class="flex-1">
-<textarea class="w-full border-none focus:ring-0 font-body-md text-on-surface resize-none h-28 pt-2" placeholder="What's happening in your neighborhood?"></textarea>
+<label class="sr-only" for="community-preview-composer">Sample post composer, preview only</label>
+<textarea id="community-preview-composer" aria-describedby="composer-preview-note" readonly class="w-full border-none focus:ring-0 font-body-md text-on-surface resize-none h-28 pt-2" placeholder="Posting is not enabled in this preview."></textarea>
 <div class="flex justify-between items-center mt-4 border-t border-border-line/30 pt-4">
 <div class="flex gap-5">
-<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">image</span>
-<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">gif_box</span>
-<span class="material-symbols-outlined text-muted-gray cursor-pointer hover:text-primary transition-colors">mood</span>
+<span aria-hidden="true" class="material-symbols-outlined text-muted-gray">image</span>
+<span aria-hidden="true" class="material-symbols-outlined text-muted-gray">gif_box</span>
+<span aria-hidden="true" class="material-symbols-outlined text-muted-gray">mood</span>
 </div>
 <div class="flex items-center gap-5">
 <span class="text-micro text-muted-gray hidden sm:inline italic">2000 characters left</span>
-<button class="bg-primary text-white font-label-sm px-8 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all font-bold">Post</button>
+<button type="button" disabled aria-describedby="composer-preview-note" class="bg-primary text-white font-label-sm px-8 py-2.5 rounded-full shadow-md transition-all font-bold opacity-60 cursor-not-allowed">Preview only</button>
 </div>
 </div>
 </div>
@@ -392,16 +416,16 @@
 </div>
 </div>
 <div class="flex items-center gap-10 pl-16">
-<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors group">
-<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">favorite</span>
-<span class="font-label-sm font-bold">142</span>
+<button type="button" disabled aria-label="Like action preview only" class="flex items-center gap-2 text-muted-gray opacity-60 cursor-not-allowed">
+<span aria-hidden="true" class="material-symbols-outlined text-[22px]">favorite</span>
+<span class="font-label-sm font-bold">Preview</span>
 </button>
-<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors group">
-<span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">chat_bubble</span>
-<span class="font-label-sm font-bold">28</span>
+<button type="button" disabled aria-label="Comment action preview only" class="flex items-center gap-2 text-muted-gray opacity-60 cursor-not-allowed">
+<span aria-hidden="true" class="material-symbols-outlined text-[22px]">chat_bubble</span>
+<span class="font-label-sm font-bold">Preview</span>
 </button>
-<button class="flex items-center gap-2 text-muted-gray hover:text-primary transition-colors">
-<span class="material-symbols-outlined text-[22px] hover:scale-110 transition-transform">share</span>
+<button type="button" disabled aria-label="Share action preview only" class="flex items-center gap-2 text-muted-gray opacity-60 cursor-not-allowed">
+<span aria-hidden="true" class="material-symbols-outlined text-[22px]">share</span>
 </button>
 </div>
 </div>
@@ -502,6 +526,7 @@
     function cyclePhoneScreens() {
         for (let i = 0; i < totalScreens; i++) {
             const screen = document.getElementById(`screen-${i}`);
+            screen.setAttribute('aria-hidden', i === currentScreenIdx ? 'false' : 'true');
             if (i === currentScreenIdx) {
                 screen.classList.remove('opacity-0', 'translate-x-full', '-translate-x-full');
                 screen.classList.add('opacity-100', 'translate-x-0');
@@ -516,7 +541,9 @@
         currentScreenIdx = (currentScreenIdx + 1) % totalScreens;
     }
 
-    setInterval(cyclePhoneScreens, 4000);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.setInterval(cyclePhoneScreens, 4000);
+    }
 
     const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
