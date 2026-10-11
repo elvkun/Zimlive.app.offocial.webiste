@@ -129,6 +129,14 @@ The brand personality is **Professional yet Culturally Grounded**, embodying the
 
 The UI should evoke a sense of "African-tech" premium: a clean, sophisticated environment that feels technologically advanced yet warm and accessible. This is achieved through the use of soft organic gradients, generous whitespace, and high-contrast typography that commands attention while remaining readable. The aesthetic is "live" and "dynamic," reflecting the real-time nature of community finance.
 
+## Product Status and Trust Claims
+
+O’Riley Foundation is the parent company. Keep marketing language consistent with the actual implementation in the related `ryvo-hardened` repository: an Android offline UI prototype, iOS and web starter screens, and backend services that are still planned.
+
+Wallet, messaging, identity, moderation, AI, and community screens on the site are product concepts or sample UI unless a working service has been implemented and verified. Do not describe sample data as real usage, imply that payments or accounts are live, or claim encryption, identity verification, or financial-grade security without evidence. Mark prototype content clearly and update these notes as implementation changes.
+
+The intended product architecture has native Android and iOS clients, a browser client, and shared backend APIs and services. Avoid implying that the existing client apps share a backend before those integrations are built.
+
 ## Colors
 
 This design system uses a palette rooted in "African Teal" and "Prosperity Gold." 
@@ -172,7 +180,7 @@ The shape language is defined by **Softened Geometry**.
 
 - **Cards & Containers**: Use a consistent 12px or 16px radius for a modern, approachable feel.
 - **Device Frames**: Representations of mobile apps (The "Stage") use a larger 24px to 34px radius to mimic physical hardware.
-- **Interactive Elements**: Buttons and inputs use an 8px radius to maintain a slightly more structured, "bank-grade" appearance compared to the softer cards.
+- **Interactive Elements**: Buttons and inputs use an 8px radius for a clear, structured appearance compared to the softer cards.
 - **Status Indicators**: Use "Pill" shapes (999px) for online indicators and tags to provide a visual break from the rectangular grid.
 
 ## Components
