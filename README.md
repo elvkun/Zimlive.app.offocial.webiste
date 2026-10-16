@@ -12,7 +12,7 @@ This site presents product direction and interface concepts. Example feeds, prof
 
 ## Website
 
-The site uses semantic `index.html`, a standalone stylesheet at [`styles/site.css`](styles/site.css), and a small native ES module at [`scripts/site.js`](scripts/site.js) for the accessible mobile navigation. It has no framework, build step, third-party runtime dependencies, analytics, or remote assets. Serve the repository root with any static web server; root-relative asset paths expect the site to be hosted at the domain root. UI design tokens and guidance are in [`DESIGN.md`](DESIGN.md).
+The site uses semantic `index.html`, a standalone stylesheet at [`styles/site.css`](styles/site.css), and a small native ES module at [`scripts/site.js`](scripts/site.js) for accessible mobile navigation and lightweight reveal motion. It has no framework, build step, third-party runtime dependencies, analytics, or remote assets. Scroll reveals use the browser's `IntersectionObserver` once per element and animate only opacity and position; there are no continuous loops or added image/font downloads. Motion is omitted for reduced-motion preferences, and content remains visible without JavaScript. Serve the repository root with any static web server; root-relative asset paths expect the site to be hosted at the domain root. UI design tokens and guidance are in [`DESIGN.md`](DESIGN.md).
 
 The sitemap is [`sitemap.xml`](sitemap.xml), and [`robots.txt`](robots.txt) points crawlers to it. Both retain the current `zimlive.app` host; update them only after a Flow domain and any migration redirects are established. Fragment links are in-page navigation and are not separate sitemap entries. The parent company website is [O’Riley Foundation](https://www.orileyplatforms.com/).
 

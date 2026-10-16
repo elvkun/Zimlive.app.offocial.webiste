@@ -26,6 +26,7 @@ Use the forest and pine colors for text on pale surfaces. Reserve bright mint an
 - Center content in a fluid container up to roughly 1180px. Use 24px mobile gutters and 40px desktop gutters.
 - Use white cards, thin green-gray borders, and low-contrast shadows. Keep gradients and blur effects subtle.
 - Maintain visible keyboard focus, sufficient contrast, reduced-motion support, semantic headings, and a skip link.
+- Use quiet, short reveal motion for key content and small hover feedback on pointer devices. Animate opacity and transform only, observe each reveal once, and never rely on animation to disclose essential content. Respect `prefers-reduced-motion`; do not add looping effects, scroll listeners, animation packages, or large media for decoration.
 
 ## Website constraints
 
