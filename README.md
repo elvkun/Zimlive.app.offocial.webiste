@@ -12,10 +12,10 @@ This site presents product direction and interface concepts. Example feeds, prof
 
 ## Website
 
-The site is a static, semantic `index.html` page with embedded CSS and no JavaScript runtime or third-party runtime dependencies. Open it directly or serve the repository with any static web server. UI design tokens and guidance are in [`DESIGN.md`](DESIGN.md).
+The site uses semantic `index.html`, a standalone stylesheet at [`styles/site.css`](styles/site.css), and a small native ES module at [`scripts/site.js`](scripts/site.js) for the accessible mobile navigation. It has no framework, build step, third-party runtime dependencies, analytics, or remote assets. Serve the repository root with any static web server; root-relative asset paths expect the site to be hosted at the domain root. UI design tokens and guidance are in [`DESIGN.md`](DESIGN.md).
 
 The sitemap is [`sitemap.xml`](sitemap.xml), and [`robots.txt`](robots.txt) points crawlers to it. Both retain the current `zimlive.app` host; update them only after a Flow domain and any migration redirects are established. Fragment links are in-page navigation and are not separate sitemap entries. The parent company website is [O’Riley Foundation](https://www.orileyplatforms.com/).
 
 The social preview and favicon are local SVG assets. The public page contains no account form or fake app download action. It describes the current app scope and uses illustrative interface artwork rather than remote screenshots or live product data.
 
-The page's meta-delivered Content Security Policy disables scripts, network connections, forms, objects, and framing, and allows only the embedded stylesheet and same-origin assets. Static hosts should also send response headers for `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`, and `Content-Security-Policy: frame-ancestors 'none'`; `frame-ancestors` is ignored inside a meta policy.
+The page's meta-delivered Content Security Policy allows only same-origin scripts, styles, and assets, while disabling network connections, forms, objects, and framing. Static hosts should also send response headers for `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`, and `Content-Security-Policy: frame-ancestors 'none'`; `frame-ancestors` is ignored inside a meta policy. Meta policies are defense in depth; response headers are preferred where hosting supports them.

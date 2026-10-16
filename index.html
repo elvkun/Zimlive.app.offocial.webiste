@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf8">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
   <meta name="description" content="Explore Flow, a cross-platform product prototype bringing community, communication, and local commerce into one considered experience.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Flow — Ideas in motion">
@@ -15,133 +15,7 @@
   <link rel="canonical" href="https://www.zimlive.app/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Flow — Ideas in motion</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --forest: #0b3b2f;
-      --pine: #006c49;
-      --emerald: #10b981;
-      --mint-bright: #6cf8bb;
-      --mint: #e6fbf2;
-      --canvas: #f7faf8;
-      --white: #fff;
-      --ink: #181c1b;
-      --muted: #414945;
-      --line: #d9e8e2;
-      --max: 1180px;
-      font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
-      font-synthesis: none;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
-    body { margin: 0; min-width: 320px; background: var(--canvas); color: var(--ink); }
-    a { color: inherit; }
-    a:focus-visible { outline: 3px solid var(--emerald); outline-offset: 4px; border-radius: 4px; }
-    .skip-link { position: absolute; z-index: 10; left: 16px; top: -60px; padding: 12px 16px; border-radius: 8px; background: var(--forest); color: var(--white); }
-    .skip-link:focus { top: 12px; }
-    .wrap { width: min(calc(100% - 48px), var(--max)); margin-inline: auto; }
-    .site-header { position: sticky; z-index: 5; top: 0; border-bottom: 1px solid rgb(217 232 226 / 78%); background: rgb(247 250 248 / 94%); backdrop-filter: blur(14px); }
-    .nav { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 28px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; color: var(--forest); text-decoration: none; }
-    .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 13px; background: var(--forest); color: var(--white); font-size: 23px; font-weight: 800; letter-spacing: -.06em; }
-    .brand-name { display: block; font-size: 20px; font-weight: 800; letter-spacing: -.05em; }
-    .brand-line { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .17em; }
-    .nav-links { display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); }
-    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 650; text-decoration: none; }
-    .nav-links a:hover { color: var(--forest); }
-    .nav-cta, .button { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; border: 1px solid var(--forest); border-radius: 999px; padding: 0 19px; background: var(--forest); color: var(--white); font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .18s ease, background-color .18s ease; }
-    .nav-cta:hover, .button:hover { transform: translateY(-1px); background: var(--pine); }
-    .button.secondary { border-color: var(--line); background: var(--white); color: var(--forest); }
-    .button.secondary:hover { background: var(--mint); }
-
-    .hero { position: relative; overflow: hidden; padding: clamp(70px, 11vw, 128px) 0 84px; background: var(--mint); }
-    .hero::before, .hero::after { position: absolute; width: 420px; height: 420px; border: 1px solid rgb(11 59 47 / 8%); border-radius: 50%; content: ""; pointer-events: none; }
-    .hero::before { top: -260px; right: -100px; box-shadow: 0 0 0 44px rgb(11 59 47 / 3%), 0 0 0 88px rgb(11 59 47 / 2%); }
-    .hero::after { right: 36%; bottom: -380px; }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); align-items: center; gap: clamp(44px, 8vw, 104px); }
-    .kicker { margin: 0 0 20px; color: var(--pine); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
-    h1, h2, h3, p { overflow-wrap: anywhere; }
-    h1 { max-width: 700px; margin: 0; color: var(--forest); font-size: clamp(48px, 7.5vw, 86px); font-weight: 760; line-height: .98; letter-spacing: -.065em; }
-    .hero-copy { max-width: 610px; margin: 25px 0 0; color: #34443c; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.65; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .prototype-note { display: flex; align-items: flex-start; gap: 10px; max-width: 540px; margin-top: 29px; color: var(--muted); font-size: 12px; line-height: 1.55; }
-    .note-dot { flex: 0 0 8px; width: 8px; height: 8px; margin-top: 4px; border-radius: 50%; background: var(--emerald); }
-
-    .preview-card { position: relative; max-width: 410px; margin-inline: auto; padding: 18px; border: 1px solid rgb(11 59 47 / 10%); border-radius: 25px; background: var(--white); box-shadow: 0 26px 70px rgb(11 59 47 / 12%); transform: rotate(1.5deg); }
-    .preview-top { display: flex; align-items: center; justify-content: space-between; padding: 2px 3px 16px; border-bottom: 1px solid var(--line); }
-    .preview-title { color: var(--forest); font-size: 14px; font-weight: 800; }
-    .preview-tag { border-radius: 99px; padding: 6px 9px; background: var(--mint); color: var(--pine); font-size: 9px; font-weight: 750; letter-spacing: .05em; text-transform: uppercase; }
-    .preview-welcome { margin: 19px 0 14px; color: var(--muted); font-size: 12px; }
-    .preview-welcome strong { display: block; margin-top: 4px; color: var(--forest); font-size: 22px; letter-spacing: -.04em; }
-    .preview-feature { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px; min-height: 106px; padding: 16px; border-radius: 17px; background: var(--forest); color: var(--white); }
-    .preview-feature small { display: block; margin-bottom: 8px; color: #b5ddca; font-size: 9px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-    .preview-feature strong { max-width: 210px; font-size: 21px; line-height: 1.12; letter-spacing: -.04em; }
-    .arrow-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--mint-bright); color: var(--forest); font-size: 16px; font-weight: 800; }
-    .preview-list { display: grid; gap: 9px; margin-top: 13px; }
-    .preview-row { display: flex; align-items: center; gap: 11px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 13px; color: var(--forest); font-size: 12px; font-weight: 650; }
-    .row-icon { display: grid; width: 28px; height: 28px; flex: 0 0 28px; place-items: center; border-radius: 9px; background: var(--mint); color: var(--pine); font-size: 12px; }
-    .preview-caption { margin: 13px 0 0; color: #67736d; font-size: 10px; line-height: 1.45; text-align: center; }
-
-    section.content-section { padding: clamp(66px, 9vw, 108px) 0; }
-    .section-heading { display: grid; grid-template-columns: minmax(0, .85fr) minmax(260px, .7fr); align-items: end; gap: 30px; margin-bottom: 38px; }
-    .section-heading .kicker { margin-bottom: 13px; }
-    h2 { margin: 0; color: var(--forest); font-size: clamp(34px, 5vw, 54px); font-weight: 730; line-height: 1.03; letter-spacing: -.055em; }
-    .section-intro { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
-    .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; }
-    .feature { min-height: 222px; padding: 22px; border: 1px solid var(--line); border-radius: 19px; background: var(--white); }
-    .feature-icon { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 13px; background: var(--mint); color: var(--pine); font-size: 18px; }
-    .feature h3 { margin: 24px 0 8px; color: var(--forest); font-size: 18px; letter-spacing: -.035em; }
-    .feature p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-
-    .status-section { background: var(--white); }
-    .status-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .status-card { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--canvas); }
-    .status-label { display: inline-flex; align-items: center; gap: 8px; color: var(--pine); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-    .status-label::before { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); content: ""; }
-    .status-card h3 { margin: 17px 0 8px; color: var(--forest); font-size: 20px; letter-spacing: -.04em; }
-    .status-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
-    .trust-note { display: grid; grid-template-columns: auto 1fr; gap: 15px; margin-top: 19px; padding: 21px; border-radius: 17px; background: var(--forest); color: white; }
-    .trust-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgb(108 248 187 / 45%); border-radius: 50%; color: var(--mint-bright); font-weight: 800; }
-    .trust-note p { margin: 0; color: rgb(255 255 255 / 85%); font-size: 13px; line-height: 1.65; }
-    .trust-note strong { color: var(--white); }
-
-    .closing { padding: 72px 0; background: var(--mint); }
-    .closing-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-    .closing h2 { max-width: 580px; }
-    .closing p { max-width: 560px; margin: 15px 0 0; color: var(--muted); font-size: 15px; line-height: 1.65; }
-    footer { padding: 32px 0 26px; background: var(--white); }
-    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .footer-copy { color: var(--muted); font-size: 12px; line-height: 1.6; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
-    .footer-links a { color: var(--muted); font-size: 12px; text-decoration: none; }
-    .footer-links a:hover { color: var(--forest); text-decoration: underline; }
-    .fine-print { margin: 22px 0 0; padding-top: 17px; border-top: 1px solid var(--line); color: #68736e; font-size: 11px; }
-
-    @media (max-width: 850px) {
-      .hero-grid { grid-template-columns: minmax(0, 1fr) minmax(260px, .8fr); gap: 34px; }
-      .section-heading { grid-template-columns: 1fr; align-items: start; gap: 17px; }
-    }
-    @media (max-width: 650px) {
-      .wrap { width: min(calc(100% - 36px), var(--max)); }
-      .nav { min-height: 68px; gap: 12px; }
-      .nav-links { display: none; }
-      .nav-cta { min-height: 40px; padding-inline: 14px; font-size: 12px; }
-      .hero { padding: 64px 0 60px; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-copy { font-size: 16px; }
-      .preview-card { width: min(100%, 400px); transform: none; }
-      .feature-grid, .status-grid { grid-template-columns: 1fr; }
-      .feature { min-height: 0; }
-      .feature h3 { margin-top: 17px; }
-      .closing-inner, .footer-row { align-items: flex-start; flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
-    }
-  </style>
+  <link rel="stylesheet" href="/styles/site.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -151,7 +25,8 @@
         <span class="brand-mark" aria-hidden="true">F</span>
         <span><span class="brand-name">Flow</span><span class="brand-line">IDEAS IN MOTION</span></span>
       </a>
-      <nav class="nav-links" aria-label="Main navigation">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation">Menu</button>
+      <nav class="nav-links" id="main-navigation" aria-label="Main navigation">
         <a href="#about">The idea</a>
         <a href="#platforms">Platforms</a>
         <a href="#trust">What is live</a>
@@ -234,5 +109,6 @@
       <p class="fine-print">© 2026 O’Riley Foundation · Flow is a prototype preview. Product capabilities and service availability may change as implementation progresses.</p>
     </div>
   </footer>
+  <script type="module" src="/scripts/site.js"></script>
 </body>
 </html>

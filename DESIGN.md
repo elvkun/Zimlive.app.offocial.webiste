@@ -1,6 +1,6 @@
 # Flow visual system
 
-This guide keeps the static product website, Android application, and iOS and web previews visually aligned. Flow is a prototype: visual examples must not imply that a connected service exists.
+This guide keeps the Flow website, Android application, and iOS and web previews visually aligned. The website uses semantic HTML, a separate CSS design system, and a small JavaScript module for mobile navigation. Flow is a prototype: visual examples must not imply that a connected service exists.
 
 ## Brand palette
 
@@ -29,6 +29,6 @@ Use the forest and pine colors for text on pale surfaces. Reserve bright mint an
 
 ## Website constraints
 
-The public product page is one static `index.html` file with embedded CSS. It has no JavaScript, framework runtime, analytics, tracking pixels, third-party fonts, or remote images. Links should lead to real sections or the O’Riley Foundation site; do not add forms or app-store links until the destinations and services exist.
+The public product page is a lightweight static site with `index.html`, `styles/site.css`, and `scripts/site.js`. It has no framework runtime, analytics, tracking pixels, third-party fonts, or remote images. Keep JavaScript limited to progressive enhancement and preserve usable navigation when it is unavailable. Links should lead to real sections or the O’Riley Foundation site; do not add forms or app-store links until the destinations and services exist.
 
 Product examples and platform descriptions must match the project repositories. Label mock interface art as illustrative, avoid invented user or transaction counts, and state when an activity remains local demo data. The existing `zimlive.app` canonical and sitemap host are retained until the owner selects and configures a Flow domain.
