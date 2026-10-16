@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f7fcfa"/>
-      <stop offset="1" stop-color="#dff6ed"/>
+      <stop offset="0" stop-color="#f7faf8"/>
+      <stop offset="1" stop-color="#e6fbf2"/>
     </linearGradient>
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect x="74" y="72" width="70" height="70" rx="18" fill="#006858"/>
+  <rect x="74" y="72" width="70" height="70" rx="18" fill="#0B3B2F"/>
   <path d="M96 83h44v12h-30v17h25v12h-25v27H96V83z" fill="#fff"/>
   <text x="74" y="230" fill="#0b1f1a" font-family="Arial,sans-serif" font-size="68" font-weight="700">Flow</text>
-  <text x="74" y="304" fill="#006858" font-family="Arial,sans-serif" font-size="38" font-weight="600">Cross-platform product preview</text>
-  <text x="74" y="370" fill="#3d4946" font-family="Arial,sans-serif" font-size="28">Android prototype · iOS and web starters · Shared services planned</text>
+  <text x="74" y="304" fill="#006c49" font-family="Arial,sans-serif" font-size="38" font-weight="600">Ideas in motion</text>
+  <text x="74" y="370" fill="#414945" font-family="Arial,sans-serif" font-size="28">Android prototype · iOS and web previews</text>
 </svg>
