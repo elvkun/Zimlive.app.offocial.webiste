@@ -2,7 +2,7 @@
 
 This repository contains Flow's static product website. The repository name and current sitemap host still use the legacy ZimLive name; DNS, domain ownership, and redirects are outside this code change.
 
-Flow is a product of **O’Riley Foundation**, its parent company. The intended product architecture has native Android and iOS clients, a browser-based web app, and shared backend services.
+Flow is a product of **O’Riley Foundation**, its parent company. The intended product architecture has native Android and iOS clients, a browser-based web app, and shared backend services. The linked repository roles, shared color palette, and current capability statements are maintained in the [Flow product system](https://github.com/elvkun/ryvo-hardened/blob/main/docs/PRODUCT_SYSTEM.md).
 
 ## Current implementation status
 
