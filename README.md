@@ -6,7 +6,7 @@ Flow is a product of **O’Riley Foundation**, its parent company. The intended 
 
 ## Current implementation status
 
-The related [`ryvo-hardened`](https://github.com/elvkun/ryvo-hardened) repository contains the Android prototype and iOS and web previews. The web preview supports a limited marketplace flow when its API and Supabase services are configured. Android remains a local UI demonstration; iOS is an informational preview. Production payments, identity verification, messaging, and AI services are not available.
+The related [`ryvo-hardened`](https://github.com/elvkun/ryvo-hardened) repository contains the Android app, iOS introduction, browser app, and API source. The browser app uses Firebase Auth and Firestore for accounts, profiles, private listing drafts, reports, and published listing discovery when a Firebase project is configured. Android service screens use local demonstration data; iOS does not yet connect to shared accounts or services. Payments, identity verification, messaging, and AI services are not available.
 
 This site presents product direction and interface concepts. Example feeds, profiles, counts, wallets, and service screens are illustrative UI; they do not indicate active users, verified accounts, processed payments, live synchronization, or deployed services. Update this disclosure when those capabilities are implemented and verified.
 

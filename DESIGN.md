@@ -1,6 +1,6 @@
 # Flow visual system
 
-This guide keeps the Flow website, Android application, and iOS and web previews visually aligned. The website uses semantic HTML, a separate CSS design system, and a small JavaScript module for mobile navigation. Flow is a prototype: visual examples must not imply that a connected service exists.
+This guide keeps the Flow website, Android application, and iOS and web apps visually aligned. The website uses semantic HTML, a separate CSS design system, and a small JavaScript module for mobile navigation. Visual examples must not imply a connected service where none is available.
 
 ## Brand palette
 
@@ -21,7 +21,7 @@ Use the forest and pine colors for text on pale surfaces. Reserve bright mint an
 
 ## Type and layout
 
-- Use a clear system sans-serif stack so the static page does not depend on a third-party font service. The Android prototype uses its native sans-serif typography.
+- Use a clear system sans-serif stack so the static page does not depend on a third-party font service. The Android app uses its native sans-serif typography.
 - Give headings a compact, confident rhythm and body text generous line spacing. Avoid all-caps for paragraphs; use it sparingly for short labels.
 - Center content in a fluid container up to roughly 1180px. Use 24px mobile gutters and 40px desktop gutters.
 - Use white cards, thin green-gray borders, and low-contrast shadows. Keep gradients and blur effects subtle.
