@@ -82,7 +82,7 @@ async function initializeAccount(firebaseConfig) {
   const auth = authSdk.getAuth(app);
   for (const fieldset of fields) fieldset.disabled = false;
   if (resetRequestButton) resetRequestButton.disabled = false;
-  if (configNote) configNote.textContent = 'Your account stays on this site. Use the same Flow account you use on other connected Flow platforms.';
+  if (configNote) configNote.textContent = 'Your account stays on this site. If the Flow browser workspace uses the same Firebase Authentication project and sign-in provider, you can use the same credentials there too; sign in separately on each site.';
 
   authSdk.onAuthStateChanged(auth, (user) => {
     if (!user) {
