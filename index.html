@@ -31,7 +31,7 @@
         <a href="#platforms">Platforms</a>
         <a href="#trust">What is live</a>
       </nav>
-      <a class="nav-cta" href="#account-access">Sign in / Create account <span aria-hidden="true">↗</span></a>
+      <a class="nav-cta" href="#account-access">Log in <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
@@ -98,17 +98,17 @@
             </div>
             <div id="account-forms">
               <div class="account-tabs" role="tablist" aria-label="Account options">
-                <button class="account-tab is-active" id="tab-sign-in" type="button" role="tab" aria-selected="true" aria-controls="form-sign-in" data-account-tab="sign-in">Sign in</button>
+                <button class="account-tab is-active" id="tab-sign-in" type="button" role="tab" aria-selected="true" aria-controls="form-sign-in" data-account-tab="sign-in">Log in</button>
                 <button class="account-tab" id="tab-create" type="button" role="tab" aria-selected="false" aria-controls="form-create" data-account-tab="create">Create account</button>
               </div>
               <form class="account-form" id="form-sign-in" role="tabpanel" aria-labelledby="tab-sign-in" data-account-panel="sign-in">
-                <fieldset data-auth-fields disabled><label for="sign-in-email">Email address</label><input id="sign-in-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="sign-in-password">Password</label><input id="sign-in-password" name="password" type="password" autocomplete="current-password" maxlength="128" required><button class="button" type="submit">Sign in</button></fieldset>
+                <fieldset data-auth-fields disabled><label for="sign-in-email">Email address</label><input id="sign-in-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="sign-in-password">Password</label><input id="sign-in-password" name="password" type="password" autocomplete="current-password" maxlength="128" required><button class="button" type="submit">Log in</button></fieldset>
                 <button class="text-link" id="forgot-password" type="button" disabled>Forgot your password?</button>
               </form>
               <form class="account-form" id="form-create" role="tabpanel" aria-labelledby="tab-create" data-account-panel="create" hidden>
                 <fieldset data-auth-fields disabled><label for="create-email">Email address</label><input id="create-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="create-password">Create password</label><input id="create-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" aria-describedby="password-hint" required><small class="password-hint" id="password-hint">Use at least 12 characters. We’ll email a link to verify your address.</small><button class="button" type="submit">Create account</button></fieldset>
               </form>
-              <form class="account-form reset-form" id="form-reset-request" hidden><label for="reset-email">Email address</label><input id="reset-email" name="email" type="email" autocomplete="email" maxlength="254" required><button class="button" type="submit">Send password reset link</button><button class="text-link" id="back-to-sign-in" type="button">Back to sign in</button></form>
+              <form class="account-form reset-form" id="form-reset-request" hidden><label for="reset-email">Email address</label><input id="reset-email" name="email" type="email" autocomplete="email" maxlength="254" required><button class="button" type="submit">Send password reset link</button><button class="text-link" id="back-to-sign-in" type="button">Back to log in</button></form>
               <form class="account-form reset-form" id="form-reset" hidden><label for="reset-password">New password</label><input id="reset-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required><button class="button" type="submit">Update password</button></form>
             </div>
             <p class="account-status" id="account-status" role="status" aria-live="polite"></p>
