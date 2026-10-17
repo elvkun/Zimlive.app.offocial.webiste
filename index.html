@@ -106,7 +106,7 @@
                 <button class="text-link" id="forgot-password" type="button" disabled>Forgot your password?</button>
               </form>
               <form class="account-form" id="form-create" role="tabpanel" aria-labelledby="tab-create" data-account-panel="create" hidden>
-                <fieldset data-auth-fields disabled><label for="create-email">Email address</label><input id="create-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="create-password">Create password</label><input id="create-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" aria-describedby="password-hint" required><small class="password-hint" id="password-hint">Use at least 12 characters. We’ll email a link to verify your address.</small><button class="button" type="submit">Create account</button></fieldset>
+                <fieldset data-auth-fields disabled><label for="create-email">Email address</label><input id="create-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="create-password">Create password</label><input id="create-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" aria-describedby="password-hint" required><small class="password-hint" id="password-hint">Use at least 12 characters. We’ll email a link to verify your address.</small><div class="privacy-ack"><input id="create-privacy-ack" name="privacyAcknowledged" type="checkbox" required><label for="create-privacy-ack">I have read and understand the Flow Privacy Policy.</label><a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Read policy</a></div><button class="button" type="submit">Create account</button></fieldset>
               </form>
               <form class="account-form reset-form" id="form-reset-request" hidden><label for="reset-email">Email address</label><input id="reset-email" name="email" type="email" autocomplete="email" maxlength="254" required><button class="button" type="submit">Send password reset link</button><button class="text-link" id="back-to-sign-in" type="button">Back to log in</button></form>
               <form class="account-form reset-form" id="form-reset" hidden><label for="reset-password">New password</label><input id="reset-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required><button class="button" type="submit">Update password</button></form>
@@ -132,11 +132,17 @@
         <a class="brand" href="#top" aria-label="Flow home"><span class="brand-mark" aria-hidden="true">F</span><span><span class="brand-name">Flow</span><span class="brand-line">IDEAS IN MOTION</span></span></a>
         <div class="footer-links"><a href="#about">The idea</a><a href="#platforms">Platforms</a><a href="https://www.orileyplatforms.com/">O’Riley Foundation</a></div>
       </div>
-      <p class="fine-print">© 2026 O’Riley Foundation · Flow features vary by platform and configured services.</p>
+      <div class="fine-print footer-legal"><span>© 2026 O’Riley Foundation · Flow features vary by platform and configured services.</span><div><a href="/privacy-policy.html">Privacy Policy</a><button class="text-link" type="button" data-open-cookie-choices>Cookie choices</button></div></div>
     </div>
   </footer>
+  <section class="cookie-banner" id="flow-cookie-banner" role="region" aria-labelledby="cookie-title" hidden>
+    <div class="cookie-copy"><h2 id="cookie-title">Your privacy choices</h2><p>Flow’s reviewed websites do not currently use analytics or advertising cookies. Essential storage supports your saved choice and account sessions you request. Read the <a href="/privacy-policy.html">Privacy Policy</a>.</p></div>
+    <div class="cookie-actions"><button class="button secondary" type="button" data-cookie-accept="essential">Essentials only</button><button class="button secondary" type="button" data-cookie-accept="all">Accept all cookies</button><button class="text-link" type="button" data-open-cookie-choices>Manage choices</button></div>
+  </section>
+  <dialog class="cookie-dialog" id="flow-cookie-dialog" aria-labelledby="cookie-dialog-title"><form method="dialog"><h2 id="cookie-dialog-title">Cookie and storage choices</h2><p>Only essential browser storage is active in the reviewed Flow websites. “Accept all cookies” therefore allows the same current technologies as “Essentials only.” No optional category is active. If that changes, Flow must provide details and request a new choice.</p><label class="cookie-option"><input type="checkbox" checked disabled><span><strong>Essential storage</strong><small>Stores your choice and supports an account session when you choose to sign in.</small></span></label><div class="cookie-dialog-actions"><button class="button secondary" value="cancel">Cancel</button><button class="button secondary" type="button" data-save-cookie-choices>Save choices</button></div></form></dialog>
+  <script type="module" src="/scripts/consent.js"></script>
   <script type="module" src="/scripts/site.js"></script>
-  <script type="application/json" id="flow-firebase-config">{"apiKey":"","authDomain":"","projectId":"","appId":""}</script>
+  <script type="application/json" id="flow-firebase-config">{"apiKey":"","authDomain":"","projectId":"","appId":"","privacyReady":false}</script>
   <script type="module" src="/scripts/account.js"></script>
 </body>
 </html>

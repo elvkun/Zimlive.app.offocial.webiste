@@ -60,11 +60,12 @@ try {
   config = {};
 }
 const configReady = ['apiKey', 'authDomain', 'projectId', 'appId']
-  .every((key) => typeof config[key] === 'string' && config[key].trim().length > 0);
+  .every((key) => typeof config[key] === 'string' && config[key].trim().length > 0)
+  && config.privacyReady === true;
 
 if (!configReady) {
-  if (configNote) configNote.textContent = 'Account setup is not finished. Your credentials will not be accepted or stored on this page.';
-  setStatus('Connect the Flow Firebase web app to enable sign in and account creation.', true);
+  if (configNote) configNote.textContent = 'Account access is disabled until Firebase security, privacy contact, retention, and rights-request controls are confirmed by the operator.';
+  setStatus('Account services are not enabled for this site yet. Your credentials will not be submitted.', true);
 } else {
   initializeAccount(config).catch(() => {
     if (configNote) configNote.textContent = 'Flow account service could not be reached. Please try again later.';
@@ -128,6 +129,9 @@ async function initializeAccount(firebaseConfig) {
     const values = new FormData(form);
     const email = String(values.get('email') ?? '').trim().toLowerCase();
     const password = String(values.get('password') ?? '');
+    if (values.get('privacyAcknowledged') !== 'on') {
+      return setStatus('Read the Flow Privacy Policy and confirm the acknowledgment to create an account.', true);
+    }
     if (!email || password.length < 12 || password.length > 128) return setStatus('Use a valid email and a password between 12 and 128 characters.', true);
     setFormBusy(form, true);
     try {
