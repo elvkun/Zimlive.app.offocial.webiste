@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Flow – Your Life in Motion</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Syne:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+    :root {
+      --primary: #0b3b2f;
+      --primary-light: #165b49;
+      --accent: #10b981;
+      --accent-soft: rgba(16, 185, 129, 0.12);
+      --gold: #f59e0b;
+      --surface: #f8faf9;
+      --surface-card: #ffffff;
+      --text-main: #0f1f1a;
+      --text-muted: #526b61;
+      --border: #e2e8e5;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 24px;
+      --shadow-sm: 0 2px 8px rgba(11, 59, 47, 0.04);
+      --shadow-md: 0 10px 25px rgba(11, 59, 47, 0.07);
+      --shadow-lg: 0 20px 40px rgba(11, 59, 47, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: var(--surface);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .brand-font {
+      font-family: 'Syne', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* Top Navigation */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+    }
+
+    .brand-logo-mark {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0b3b2f, #10b981);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+    }
+
+    .brand-text {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .brand-tagline {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: -3px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.4rem;
+      background: #edf3f0;
+      padding: 0.3rem;
+      border-radius: 30px;
+    }
+
+    .nav-tab-btn {
+      border: none;
+      background: transparent;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .nav-tab-btn.active {
+      background: var(--surface-card);
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .nav-tab-btn .material-symbols-outlined {
+      font-size: 1.15rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 0.55rem 1.25rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(11, 59, 47, 0.18);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-accent {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: #0ea372;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    /* App Container Layout */
+    .app-layout {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+    }
+
+    .app-layout.full-width {
+      grid-template-columns: 1fr;
+    }
+
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Common Card Styles */
+    .card {
+      background: var(--surface-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #0b3b2f 0%, #134e3f 60%, #165b49 100%);
+      color: white;
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #a7f3d0;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #d1fae5;
+      max-width: 620px;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Stats Grid */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-pill {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Social Feed View */
+    .post-composer {
+      background: white;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .composer-input-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #10b981, #0b3b2f);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .composer-textarea {
+      width: 100%;
+      border: none;
+      outline: none;
+      resize: none;
+      font-family: inherit;
+      font-size: 0.98rem;
+      padding: 0.5rem 0;
+      color: var(--text-main);
+    }
+
+    .composer-textarea::placeholder {
+      color: #94a3b8;
+    }
+
+    .composer-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid #f1f5f3;
+      padding-top: 0.85rem;
+      margin-top: 0.75rem;
+    }
+
+    .composer-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .icon-action-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0.35rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .icon-action-btn:hover {
+      background: #f0f5f2;
+      color: var(--primary);
+    }
+
+    .feed-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s;
+    }
+
+    .feed-item:hover {
+      border-color: #cbd5e1;
+    }
+
+    .feed-author-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+
+    .feed-author-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .author-name {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .author-handle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .post-time {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    .feed-content {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .feed-interactions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f8faf9;
+    }
+
+    .interaction-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .interaction-btn:hover {
+      color: var(--primary);
+    }
+
+    .interaction-btn.liked {
+      color: #ef4444;
+    }
+
+    /* Super-Wallet View */
+    .wallet-hero {
+      background: linear-gradient(135deg, #0b3b2f, #1b5e20);
+      border-radius: var(--radius-lg);
+      color: white;
+      padding: 2.25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .wallet-balance-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #86efac;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .wallet-balance-num {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+
+    .wallet-actions-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .transactions-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .transactions-table th {
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .transactions-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #f1f5f3;
+      font-size: 0.9rem;
+    }
+
+    .tx-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .tx-credit {
+      background: rgba(16, 185, 129, 0.15);
+      color: #047857;
+    }
+
+    .tx-debit {
+      background: rgba(239, 68, 68, 0.12);
+      color: #b91c1c;
+    }
+
+    /* Business Hub View */
+    .biz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.25rem;
+    }
+
+    .biz-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .biz-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+
+    .biz-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      background: #edf7f3;
+      color: var(--primary);
+    }
+
+    /* Download / QR Code Section */
+    .download-promo-card {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+      border: 2px dashed #bbf7d0;
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .qr-frame {
+      display: inline-block;
+      background: white;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin: 1.25rem 0;
+    }
+
+    .qr-frame:hover {
+      transform: scale(1.03);
+    }
+
+    .qr-img {
+      width: 140px;
+      height: 140px;
+      display: block;
+    }
+
+    .store-buttons-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .store-btn {
+      background: #000;
+      color: white;
+      padding: 0.65rem 1.4rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      border: none;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+      background: #1e293b;
+    }
+
+    .store-btn.google {
+      background: #0b3b2f;
+    }
+
+    .store-btn.google:hover {
+      background: #14532d;
+    }
+
+    /* FlowAI Sidebar */
+    .sidebar-sticky {
+      position: sticky;
+      top: 5rem;
+      height: fit-content;
+    }
+
+    .flow-ai-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.5rem;
+    }
+
+    .ai-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .ai-badge-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #10b981, #0b3b2f);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ai-bubble {
+      background: #f1f8f5;
+      border-radius: 14px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    .ai-prompt-chip {
+      background: #f8faf9;
+      border: 1px solid #e2e8e5;
+      border-radius: 20px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: all 0.2s;
+      text-align: left;
+      width: 100%;
+    }
+
+    .ai-prompt-chip:hover {
+      border-color: var(--accent);
+      color: var(--primary);
+      background: white;
+    }
+
+    .ai-input-wrap {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .ai-input {
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.5rem 0.9rem;
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .ai-input:focus {
+      border-color: var(--accent);
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 59, 47, 0.45);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .modal-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: #94a3b8;
+      cursor: pointer;
+    }
+
+    .modal-close-btn:hover {
+      color: var(--text-main);
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 1.15rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .success-checkmark {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #10b981;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin: 0 auto 1.25rem auto;
+      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.35);
+      animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Floating Save / Export Button */
+    .floating-export-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary);
+      color: white;
+      border: 2px solid #10b981;
+      border-radius: 30px;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(11, 59, 47, 0.25);
+      z-index: 99;
+      transition: all 0.2s ease;
+    }
+
+    .floating-export-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    /* Persistent Cart Trigger Float Button */
+    .floating-cart-trigger {
+      position: fixed;
+      bottom: 84px;
+      right: 24px;
+      background: #ffffff;
+      color: var(--primary);
+      border: 2px solid var(--accent);
+      border-radius: 30px;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+      z-index: 99;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .floating-cart-trigger:hover {
+      background: var(--surface-card);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(16, 185, 129, 0.35);
+    }
+
+    .cart-badge {
+      background: var(--accent);
+      color: white;
+      border-radius: 20px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.75rem;
+      font-weight: 800;
+    }
+
+    /* Cart Slide-over Drawer */
+    .cart-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 59, 47, 0.45);
+      backdrop-filter: blur(5px);
+      z-index: 1050;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .cart-drawer-overlay.active {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .cart-drawer {
+      background: white;
+      width: 100%;
+      max-width: 440px;
+      height: 100%;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 35px rgba(0,0,0,0.15);
+      overflow-y: auto;
+      animation: slideLeft 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes slideLeft {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+
+    .cart-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid #f1f5f3;
+      gap: 0.75rem;
+    }
+
+    .cart-qty-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f1f5f3;
+      border-radius: 20px;
+      padding: 0.2rem 0.5rem;
+    }
+
+    .cart-qty-btn {
+      background: none;
+      border: none;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--primary);
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Checkout Modal (Multi-step) */
+    .checkout-modal-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      max-width: 580px;
+      width: 100%;
+      padding: 2.25rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      text-align: left;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .checkout-steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      position: relative;
+    }
+
+    .step-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      z-index: 2;
+    }
+
+    .step-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #edf3f0;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      transition: all 0.2s;
+    }
+
+    .step-node.active .step-circle {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    }
+
+    .step-node.completed .step-circle {
+      background: var(--accent);
+      color: white;
+    }
+
+    .step-node.active {
+      color: var(--primary);
+    }
+
+    .payment-option-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+
+    .payment-option-card:hover {
+      border-color: var(--accent);
+      background: #fbfdfc;
+    }
+
+    .payment-option-card.selected {
+      border-color: var(--accent);
+      background: #f0fdf4;
+      box-shadow: 0 2px 10px rgba(16, 185, 129, 0.12);
+    }
+
+    /* Product Card inside Hub */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+
+    .prod-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: #edf7f3;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+      background: white;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0b3b2f;
+      color: white;
+      padding: 0.75rem 1.75rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 2000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 992px) {
+      .app-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar-sticky {
+        position: static;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .floating-cart-trigger {
+        bottom: 84px;
+        right: 16px;
+      }
+      .floating-export-btn {
+        bottom: 20px;
+        right: 16px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-navbar {
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .nav-tabs {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .stats-strip {
+        grid-template-columns: 1fr;
+      }
+      .cart-drawer {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- Top Navigation -->
+<nav class="top-navbar">
+<div class="brand-container" onclick="switchTab('dashboard')">
+<div class="brand-logo-mark">F</div>
+<div>
+<div class="brand-text">Flow</div>
+<div class="brand-tagline">Life in Motion</div>
+</div>
+</div>
+<div class="nav-tabs">
+<button class="nav-tab-btn active" data-tab="dashboard" onclick="switchTab('dashboard')">
+<span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+      </button>
+<button class="nav-tab-btn" data-tab="feed" onclick="switchTab('feed')">
+<span class="material-symbols-outlined">dynamic_feed</span>
+        Social Feed
+      </button>
+<button class="nav-tab-btn" data-tab="wallet" onclick="switchTab('wallet')">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+        Super-Wallet
+      </button>
+<button class="nav-tab-btn" data-tab="hub" onclick="switchTab('hub')">
+<span class="material-symbols-outlined">storefront</span>
+        Business Hub
+      </button>
+</div>
+<div class="nav-actions">
+<button class="btn btn-outline" onclick="openCartDrawer()" title="View Marketplace Cart">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span id="navCartCount" style="background: var(--accent); color: white; border-radius: 10px; padding: 0.1rem 0.45rem; font-size: 0.72rem; font-weight: 700;">1</span>
+</button>
+<a class="btn btn-outline" href="https://apps.apple.com/search?term=Flow%20O%27Riley%20Foundation" target="_blank" rel="noopener noreferrer">App Store</a>
+<a class="btn btn-primary" href="https://zimlive.app/#account-access">Sign in / Create account</a>
+</div>
+</nav>
+<!-- Main Container Layout -->
+<main class="app-layout">
+<!-- Left / Primary Content Column -->
+<div class="main-content-column">
+<!-- ================= TAB 1: DASHBOARD ================= -->
+<section class="tab-content active" id="tab-dashboard">
+<!-- Hero Section -->
+<div class="hero-banner">
+<div class="hero-tag">
+<span class="material-symbols-outlined" style="font-size: 1rem;">bolt</span>
+            Flow Ecosystem
+          </div>
+<h1 class="hero-title">Your life.<br/>Unified &amp; in motion.</h1>
+<p class="hero-desc">
+            Seamless messaging, community discussions, global remittances, and verified local businesses—all harmonized into a single high-performance app built for Africa and beyond.
+          </p>
+<div class="hero-cta-group">
+<a class="btn btn-accent" href="https://zimlive.app/#account-access">
+<span class="material-symbols-outlined">person_add</span>
+              Sign in or create account
+            </a>
+<button class="btn btn-outline" onclick="switchTab('wallet')" style="color: white; border-color: rgba(255,255,255,0.3);">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+              Open Flow Wallet
+            </button>
+</div>
+</div>
+<!-- Metrics Strip -->
+<div class="stats-strip">
+<div class="stat-pill">
+<div class="stat-icon-wrap">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<div class="stat-number">100K+</div>
+<div class="stat-label">Active Users</div>
+</div>
+</div>
+<div class="stat-pill">
+<div class="stat-icon-wrap">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<div class="stat-number">50K+</div>
+<div class="stat-label">Daily Messages</div>
+</div>
+</div>
+<div class="stat-pill">
+<div class="stat-icon-wrap">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<div class="stat-number">$1M+</div>
+<div class="stat-label">Transacted</div>
+</div>
+</div>
+<div class="stat-pill">
+<div class="stat-icon-wrap">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div>
+<div class="stat-number">10K+</div>
+<div class="stat-label">Verified Merchants</div>
+</div>
+</div>
+</div>
+<!-- Download & QR Code Section -->
+<div class="download-promo-card">
+<h2 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 0.5rem;">Download Flow for Mobile</h2>
+<p style="color: var(--text-muted); max-width: 520px; margin: 0 auto;">
+            Scan the QR code with your mobile camera or choose your app store below to participate in the Flow Beta test flight.
+          </p>
+<div class="qr-frame" onclick="openBetaModal()">
+<img alt="Flow Beta QR Code" class="qr-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJwVFwJhseuRfLXmcJp5viv2fEyuP37qB8EMYztbqmDVjOpBdvwsHsUr1Z0jPvg3hlPoDpBwILjj_ph4W6LUFsBgvLaArwviGB6DHkQxjmONRquvmBAlDK5GrhLnN6R5Dp9Znkcw-1rqLLVTxiDJEFr-ruTFVx5hGji_HpYqTtgc8TvJDjAByBSWp9Ey4dAGt50Dcc61vkeOdgMHtM3GptH03mUcZxybjIr1aKcf6PHekivM7yEOxI8A"/>
+<div style="font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-top: 0.5rem;">Click or Scan to Register</div>
+</div>
+<div class="store-buttons-wrap">
+<a class="store-btn" href="https://apps.apple.com/search?term=Flow%20O%27Riley%20Foundation" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined">phone_iphone</span>
+<div style="text-align: left;">
+<div style="font-size: 0.65rem; text-transform: uppercase;">Download on the</div>
+<div style="font-size: 0.95rem; font-weight: 700;">App Store</div>
+</div>
+</a>
+<a class="store-btn google" href="https://play.google.com/store/search?q=Flow%20O%27Riley%20Foundation&c=apps" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined">play_arrow</span>
+<div style="text-align: left;">
+<div style="font-size: 0.65rem; text-transform: uppercase;">Get it on</div>
+<div style="font-size: 0.95rem; font-weight: 700;">Google Play</div>
+</div>
+</a>
+</div>
+</div>
+<!-- Quick Modules Preview -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;">
+<div class="card" onclick="switchTab('feed')" style="cursor: pointer;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+<h3 style="color: var(--primary);">Recent Community Buzz</h3>
+<span class="material-symbols-outlined" style="color: var(--accent);">arrow_forward</span>
+</div>
+<p style="color: var(--text-muted); font-size: 0.9rem;">
+              Join Harare, Bulawayo, and regional creators sharing updates, tech leads, and neighborhood deals.
+            </p>
+</div>
+<div class="card" onclick="switchTab('hub')" style="cursor: pointer;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+<h3 style="color: var(--primary);">Verified Business Hub</h3>
+<span class="material-symbols-outlined" style="color: var(--accent);">arrow_forward</span>
+</div>
+<p style="color: var(--text-muted); font-size: 0.9rem;">
+              Order clean solar kits, farm produce &amp; routers with built-in Flow Super-Wallet escrow checkout.
+            </p>
+</div>
+</div>
+</section>
+<!-- ================= TAB 2: SOCIAL FEED ================= -->
+<section class="tab-content" id="tab-feed">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+<div>
+<h2 style="color: var(--primary); font-size: 1.8rem;">Flow Community Feed</h2>
+<p style="color: var(--text-muted); font-size: 0.9rem;">A community that moves together.</p>
+</div>
+<button class="btn btn-outline" onclick="openBetaModal()">
+<span class="material-symbols-outlined">filter_list</span> Filter Topics
+          </button>
+</div>
+<!-- Post Composer -->
+<div class="post-composer">
+<div class="composer-input-row">
+<div class="avatar">F</div>
+<textarea class="composer-textarea" id="composerInput" placeholder="Share a moment, business lead, or question with the Flow community..." rows="2"></textarea>
+</div>
+<div class="composer-footer">
+<div class="composer-actions">
+<button class="icon-action-btn" title="Add Image"><span class="material-symbols-outlined">image</span></button>
+<button class="icon-action-btn" title="Add Location"><span class="material-symbols-outlined">location_on</span></button>
+<button class="icon-action-btn" title="Voice note"><span class="material-symbols-outlined">mic</span></button>
+</div>
+<button class="btn btn-primary" onclick="publishPost()">
+<span class="material-symbols-outlined">send</span> Publish
+            </button>
+</div>
+</div>
+<!-- Feed Stream -->
+<div id="postsContainer">
+<!-- Post 1 -->
+<div class="feed-item">
+<div class="feed-author-row">
+<div class="feed-author-meta">
+<div class="avatar" style="background: #0b3b2f;">S</div>
+<div>
+<div class="author-name">Samantha R. <span class="material-symbols-outlined" style="font-size: 1rem; color: #10b981;">check_circle</span></div>
+<div class="author-handle">@samantha_zw • Harare</div>
+</div>
+</div>
+<span class="post-time">20m ago</span>
+</div>
+<div class="feed-content">
+              Just tested the new instant reload via WorldRemit into my Flow Super-Wallet. It credited in less than 5 seconds with zero transaction friction! Really glad to see this level of polish. 🚀
+            </div>
+<div class="feed-interactions">
+<button class="interaction-btn liked" onclick="toggleLike(this)">
+<span class="material-symbols-outlined">favorite</span> <span>34</span>
+</button>
+<button class="interaction-btn" onclick="openBetaModal()">
+<span class="material-symbols-outlined">chat_bubble</span> <span>8 Replies</span>
+</button>
+<button class="interaction-btn" onclick="showToast('Post link copied to clipboard')">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Post 2 -->
+<div class="feed-item">
+<div class="feed-author-row">
+<div class="feed-author-meta">
+<div class="avatar" style="background: #165b49;">T</div>
+<div>
+<div class="author-name">Tinashe Murambiwa</div>
+<div class="author-handle">@tinashe_m • Gweru</div>
+</div>
+</div>
+<span class="post-time">2h ago</span>
+</div>
+<div class="feed-content">
+              Looking for a reputable solar contractor in Gweru for a 5kVA backup setup. Any recommendations verified on the Flow Business Hub? Drop your contacts below! ☀️
+            </div>
+<div class="feed-interactions">
+<button class="interaction-btn" onclick="toggleLike(this)">
+<span class="material-symbols-outlined">favorite</span> <span>19</span>
+</button>
+<button class="interaction-btn" onclick="openBetaModal()">
+<span class="material-symbols-outlined">chat_bubble</span> <span>14 Replies</span>
+</button>
+<button class="interaction-btn" onclick="showToast('Post link copied to clipboard')">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Post 3 -->
+<div class="feed-item" style="border-left: 4px solid var(--accent);">
+<div class="feed-author-row">
+<div class="feed-author-meta">
+<div class="avatar" style="background: linear-gradient(135deg, #10b981, #0b3b2f);">F</div>
+<div>
+<div class="author-name">Flow Official <span class="material-symbols-outlined" style="font-size: 1rem; color: #10b981;">verified</span></div>
+<div class="author-handle">@flow_hq • Global Announcement</div>
+</div>
+</div>
+<span class="post-time">1d ago</span>
+</div>
+<div class="feed-content">
+              Welcome to <strong>Flow</strong>! We are rolling out our unified beta suite. Feel free to explore the interactive Super-Wallet simulator, browse local businesses, and register your device for early App Store / Play Store invites. Together we are Flow.
+            </div>
+<div class="feed-interactions">
+<button class="interaction-btn" onclick="toggleLike(this)">
+<span class="material-symbols-outlined">favorite</span> <span>142</span>
+</button>
+<button class="interaction-btn" onclick="openBetaModal()">
+<span class="material-symbols-outlined">chat_bubble</span> <span>45 Replies</span>
+</button>
+<button class="interaction-btn" onclick="showToast('Post link copied to clipboard')">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= TAB 3: SUPER-WALLET ================= -->
+<section class="tab-content" id="tab-wallet">
+<!-- Balance Hero -->
+<div class="wallet-hero">
+<div>
+<div class="wallet-balance-title">Total Active Balance</div>
+<div class="wallet-balance-num" id="walletBalanceDisplay">+2,450.00 <span style="font-size: 1.5rem; font-weight: 600; color: #a7f3d0;">L.C.</span></div>
+<div id="walletEquivalentDesc" style="font-size: 0.85rem; color: #d1fae5; margin-top: 0.3rem;">≈ $2,450.00 USD Equivalent • Protected with Multi-Sig</div>
+</div>
+<div class="wallet-actions-row">
+<button class="btn btn-accent" onclick="depositFunds()">
+<span class="material-symbols-outlined">add_card</span> Quick Top-up
+            </button>
+<button class="btn btn-outline" onclick="sendTransfer()" style="color: white; border-color: rgba(255,255,255,0.4);">
+<span class="material-symbols-outlined">send_money</span> Transfer
+            </button>
+</div>
+</div>
+<!-- Wallets Grid -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem;">
+<div class="card" style="padding: 1.25rem;">
+<div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Primary Checking</div>
+<div class="checking-balance-num" style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 0.35rem 0;">1,850.00 L.C.</div>
+<div style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">Active • Daily Limit: 5,000 L.C.</div>
+</div>
+<div class="card" style="padding: 1.25rem;">
+<div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Business Vault</div>
+<div style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 0.35rem 0;">600.00 L.C.</div>
+<div style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">Yield: 4.8% APY</div>
+</div>
+<div class="card" style="padding: 1.25rem;">
+<div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Flow Card Status</div>
+<div style="font-size: 1.4rem; font-weight: 800; color: var(--primary); margin: 0.35rem 0;">Virtual Active</div>
+<div style="font-size: 0.75rem; color: #64748b; font-weight: 600;">•••• 8824 • Apple Pay ready</div>
+</div>
+</div>
+<!-- Transactions Card -->
+<div class="card">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+<h3 style="color: var(--primary);">Recent Activity</h3>
+<button class="btn btn-outline" onclick="showToast('Exporting Statement...')" style="padding: 0.35rem 0.8rem; font-size: 0.78rem;">Export CSV</button>
+</div>
+<table class="transactions-table">
+<thead>
+<tr>
+<th>Description</th>
+<th>Method / Partner</th>
+<th>Date</th>
+<th>Status</th>
+<th style="text-align: right;">Amount</th>
+</tr>
+</thead>
+<tbody id="txBody">
+<tr>
+<td><strong>WorldRemit Inbound</strong></td>
+<td>Remittance Relay</td>
+<td>May 29, 14:20</td>
+<td><span class="tx-type-badge tx-credit">Received</span></td>
+<td style="text-align: right; font-weight: 700; color: #047857;">+240.00 L.C.</td>
+</tr>
+<tr>
+<td><strong>EcoCash Top-up</strong></td>
+<td>Mobile Money</td>
+<td>May 28, 09:12</td>
+<td><span class="tx-type-badge tx-credit">Received</span></td>
+<td style="text-align: right; font-weight: 700; color: #047857;">+150.00 L.C.</td>
+</tr>
+<tr>
+<td><strong>Highland Solar Ltd</strong></td>
+<td>Business Hub Payment</td>
+<td>May 27, 18:45</td>
+<td><span class="tx-type-badge tx-debit">Merchant</span></td>
+<td style="text-align: right; font-weight: 700; color: #b91c1c;">-85.00 L.C.</td>
+</tr>
+<tr>
+<td><strong>Peer Transfer to Tinashe</strong></td>
+<td>Flow Internal</td>
+<td>May 26, 11:04</td>
+<td><span class="tx-type-badge tx-debit">Transfer</span></td>
+<td style="text-align: right; font-weight: 700; color: #b91c1c;">-40.00 L.C.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ================= TAB 4: BUSINESS HUB ================= -->
+<section class="tab-content" id="tab-hub">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+<div>
+<h2 style="color: var(--primary); font-size: 1.8rem;">Flow Business Hub</h2>
+<p style="color: var(--text-muted); font-size: 0.9rem;">Verified local businesses, direct escrow checkout, and instant Super-Wallet settlement.</p>
+</div>
+<div style="display: flex; gap: 0.5rem; align-items: center;">
+<button class="btn btn-accent" onclick="openCartDrawer()">
+<span class="material-symbols-outlined">shopping_cart</span>
+            View Cart (<span id="hubCartCount">1</span>)
+          </button>
+<button class="btn btn-primary" onclick="openBetaModal()">
+<span class="material-symbols-outlined">add_business</span> Register Business
+          </button>
+</div>
+</div>
+<!-- Orderable Products Section -->
+<div style="margin-bottom: 2rem;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+<h3 style="color: var(--primary); font-size: 1.25rem; display: flex; align-items: center; gap: 0.4rem;">
+<span class="material-symbols-outlined" style="color: var(--accent);">verified_user</span>
+            Featured Merchant Offerings &amp; Direct Order
+          </h3>
+<span style="font-size: 0.78rem; color: var(--accent); font-weight: 700; background: var(--accent-soft); padding: 0.2rem 0.6rem; border-radius: 20px;">
+            100% Escrow Protected
+          </span>
+</div>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1rem;">
+          Order verified hardware, local goods, and services directly using your Flow Super-Wallet with zero gas or checkout friction.
+        </p>
+<div class="product-grid" id="productGridContainer">
+<!-- Dynamic products inserted via JS -->
+</div>
+</div>
+<!-- Verified Business Directory Cards -->
+<h3 style="color: var(--primary); font-size: 1.25rem; margin-bottom: 0.75rem;">Verified Merchant Directory</h3>
+<div class="biz-grid">
+<!-- Card 1 -->
+<div class="biz-card">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+<span class="biz-badge">Clean Energy</span>
+<span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 4.9 (88)</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.35rem;">Highland Solar &amp; Tech</h3>
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1;">
+              Commercial and residential inverter installs, lithium batteries, and smart home backup power in Harare &amp; Gweru.
+            </p>
+<div style="display: flex; gap: 0.5rem;">
+<button class="btn btn-primary" onclick="quickBuy(0)" style="flex: 1; padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+<span class="material-symbols-outlined" style="font-size: 1rem;">bolt</span> Buy 5kVA Kit
+              </button>
+<button class="btn btn-outline" onclick="openBetaModal()" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;">Profile</button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="biz-card">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+<span class="biz-badge">Agri-Tech</span>
+<span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 4.8 (56)</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.35rem;">Zambezi Fresh Produce</h3>
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1;">
+              Farm-to-door wholesale logistics for fresh tomatoes, bell peppers, and grain with digital escrow on Flow.
+            </p>
+<div style="display: flex; gap: 0.5rem;">
+<button class="btn btn-primary" onclick="quickBuy(1)" style="flex: 1; padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+<span class="material-symbols-outlined" style="font-size: 1rem;">nutrition</span> Order Box
+              </button>
+<button class="btn btn-outline" onclick="openBetaModal()" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;">Profile</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="biz-card">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+<span class="biz-badge">Telecoms &amp; Internet</span>
+<span style="color: #f59e0b; font-weight: 700; font-size: 0.85rem;">★ 4.9 (112)</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.15rem; margin-bottom: 0.35rem;">FastTech Regional Fiber</h3>
+<p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1;">
+              High-speed WiFi 6 routers, LTE modems, and pre-activated unlimited community bundles across Zimbabwe.
+            </p>
+<div style="display: flex; gap: 0.5rem;">
+<button class="btn btn-primary" onclick="quickBuy(2)" style="flex: 1; padding: 0.45rem 0.75rem; font-size: 0.8rem;">
+<span class="material-symbols-outlined" style="font-size: 1rem;">router</span> Buy Router
+              </button>
+<button class="btn btn-outline" onclick="openBetaModal()" style="padding: 0.45rem 0.75rem; font-size: 0.8rem;">Profile</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Sidebar: FlowAI Assistant -->
+<aside class="sidebar-sticky">
+<div class="flow-ai-card">
+<div class="ai-header">
+<div class="ai-badge-icon">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<div style="font-weight: 800; color: var(--primary); font-size: 1rem;">FlowAI Assistant</div>
+<div style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">Ecosystem Intelligence</div>
+</div>
+</div>
+<div class="ai-bubble" id="aiResponseBox">
+          Hello! I'm your FlowAI intelligence partner. Ask me to draft a community post, calculate WorldRemit fees, or find verified merchants.
+        </div>
+<div>
+<button class="ai-prompt-chip" onclick="askAi('What are the fees for sending money via WorldRemit to Flow?')">
+            💡 WorldRemit exchange rate &amp; fees
+          </button>
+<button class="ai-prompt-chip" onclick="askAi('Find verified solar suppliers in Gweru')">
+            🔍 Verified solar suppliers nearby
+          </button>
+<button class="ai-prompt-chip" onclick="askAi('How does Flow Super-Wallet escrow work for purchases?')">
+            🛡️ How Escrow protection works
+          </button>
+</div>
+<div class="ai-input-wrap">
+<input class="ai-input" id="aiInput" onkeydown="if(event.key==='Enter') sendCustomAiQuery()" placeholder="Ask FlowAI anything..." type="text"/>
+<button class="btn btn-accent" onclick="sendCustomAiQuery()" style="padding: 0.5rem 0.8rem; border-radius: 50%;">
+<span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_upward</span>
+</button>
+</div>
+</div>
+<div class="card" style="padding: 1.25rem; text-align: center;">
+<span class="material-symbols-outlined" style="font-size: 2.2rem; color: var(--accent); margin-bottom: 0.4rem;">verified_user</span>
+<h4 style="color: var(--primary); margin-bottom: 0.35rem;">Bank-Grade Security</h4>
+<p style="font-size: 0.8rem; color: var(--text-muted);">
+          Every session is 256-bit encrypted with biometric verification on supported mobile hardware.
+        </p>
+</div>
+</aside>
+</main>
+<!-- Persistent Floating Cart Trigger -->
+<div class="floating-cart-trigger" onclick="openCartDrawer()">
+<span class="material-symbols-outlined" style="color: var(--accent);">shopping_bag</span>
+<div>
+<span style="font-size: 0.75rem; color: var(--text-muted); display: block; line-height: 1;">Cart Subtotal</span>
+<span id="floatingCartTotal" style="font-size: 0.95rem; font-weight: 800; color: var(--primary);">45.00 L.C.</span>
+</div>
+<span class="cart-badge" id="floatingCartBadge">1 item</span>
+</div>
+<!-- Cart Slide-Over Drawer -->
+<div class="cart-drawer-overlay" id="cartOverlay" onclick="if(event.target===this) closeCartDrawer()">
+<div class="cart-drawer">
+<div class="cart-drawer-header">
+<div style="display: flex; align-items: center; gap: 0.5rem;">
+<span class="material-symbols-outlined" style="color: var(--accent);">shopping_bag</span>
+<h3 style="color: var(--primary); font-size: 1.3rem;">Your Order Bag</h3>
+</div>
+<button class="icon-action-btn" onclick="closeCartDrawer()"><span class="material-symbols-outlined">close</span></button>
+</div>
+<div id="cartItemList" style="flex: 1; overflow-y: auto;">
+<!-- Injected Cart items -->
+</div>
+<div style="border-top: 1px solid var(--border); padding-top: 1rem; margin-top: 1rem;">
+<div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem;">
+<span>Subtotal</span>
+<span id="cartDrawerSubtotal">45.00 L.C.</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem;">
+<span>Escrow Buyer Guarantee</span>
+<span style="color: var(--accent); font-weight: 700;">FREE (0.00 L.C.)</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: var(--primary); margin: 0.75rem 0 1.25rem 0;">
+<span>Total (USD Equivalent)</span>
+<span id="cartDrawerTotal">45.00 L.C.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 0.5rem;">
+<button class="btn btn-accent" onclick="startCheckout()" style="width: 100%; padding: 0.8rem; font-size: 0.95rem;">
+<span class="material-symbols-outlined">payments</span> Proceed to Checkout
+          </button>
+<button class="btn btn-outline" onclick="closeCartDrawer()" style="width: 100%;">
+            Continue Shopping
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Multi-Step Interactive Checkout Modal -->
+<div class="modal-overlay" id="checkoutModal" onclick="if(event.target===this) closeCheckoutModal()">
+<div class="checkout-modal-box">
+<button class="modal-close-btn" onclick="closeCheckoutModal()">×</button>
+<!-- Stepper Header -->
+<div class="checkout-steps-indicator">
+<div class="step-node active" id="stepNode1">
+<div class="step-circle" id="circleStep1">1</div>
+<span>Delivery</span>
+</div>
+<div style="flex: 1; height: 2px; background: #e2e8e5; margin: 0 0.5rem -1rem 0.5rem;"></div>
+<div class="step-node" id="stepNode2">
+<div class="step-circle" id="circleStep2">2</div>
+<span>Payment</span>
+</div>
+<div style="flex: 1; height: 2px; background: #e2e8e5; margin: 0 0.5rem -1rem 0.5rem;"></div>
+<div class="step-node" id="stepNode3">
+<div class="step-circle" id="circleStep3">3</div>
+<span>Review</span>
+</div>
+<div style="flex: 1; height: 2px; background: #e2e8e5; margin: 0 0.5rem -1rem 0.5rem;"></div>
+<div class="step-node" id="stepNode4">
+<div class="step-circle" id="circleStep4">4</div>
+<span>Receipt</span>
+</div>
+</div>
+<!-- STEP 1: Delivery Details -->
+<div id="checkoutStep1">
+<h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.25rem;">Step 1: Order &amp; Delivery Details</h3>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">Provide your dispatch or collection hub coordinates.</p>
+<div class="form-group">
+<label class="form-label">Customer Full Name</label>
+<input class="form-input" id="chkCustName" placeholder="e.g. Tendai Moyo" type="text" value="Tendai Moyo"/>
+</div>
+<div class="form-group">
+<label class="form-label">Delivery Hub / Regional Destination</label>
+<select class="form-input" id="chkLocation">
+<option value="Harare Central Hub (Direct Delivery)">Harare Central Hub (Direct Delivery)</option>
+<option value="Bulawayo Logistics Center">Bulawayo Logistics Center</option>
+<option value="Gweru Express Depot">Gweru Express Depot</option>
+<option value="Mutare Cross-Border Transit Hub">Mutare Cross-Border Transit Hub</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label">Street Address / Pickup Point</label>
+<input class="form-input" id="chkAddress" placeholder="e.g. 42 Samora Machel Ave, Suite 3B" type="text" value="42 Samora Machel Ave, Suite 3B"/>
+</div>
+<div class="form-group">
+<label class="form-label">Recipient Phone Number (for delivery SMS)</label>
+<input class="form-input" id="chkPhone" placeholder="+263 77 123 4567" type="tel" value="+263 77 410 9988"/>
+</div>
+<div class="form-group">
+<label class="form-label">Delivery Speed</label>
+<div style="display: flex; gap: 0.75rem;">
+<label style="flex: 1; border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.85rem;">
+<input checked="" name="delSpeed" type="radio" value="standard"/>
+<span>Standard (1-2 days) • Free</span>
+</label>
+<label style="flex: 1; border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.8rem; display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.85rem;">
+<input name="delSpeed" type="radio" value="express"/>
+<span>Flow Prime Express • 5 L.C.</span>
+</label>
+</div>
+</div>
+<div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+<button class="btn btn-outline" onclick="closeCheckoutModal()">Cancel</button>
+<button class="btn btn-primary" onclick="goToCheckoutStep(2)">
+            Continue to Payment
+            <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Payment Method -->
+<div id="checkoutStep2" style="display: none;">
+<h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.25rem;">Step 2: Payment Method</h3>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">Select your settlement source. Flow Super-Wallet delivers instant 0% fee clearing.</p>
+<!-- Option A: Super-Wallet -->
+<div class="payment-option-card selected" id="optWallet" onclick="selectPayMethod('wallet')">
+<div class="stat-icon-wrap" style="width: 40px; height: 40px;">
+<span class="material-symbols-outlined" style="color: var(--accent);">account_balance_wallet</span>
+</div>
+<div style="flex: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<strong style="color: var(--primary); font-size: 0.95rem;">Flow Super-Wallet</strong>
+<span style="font-size: 0.72rem; background: rgba(16, 185, 129, 0.2); color: #065f46; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 12px;">Recommended • 0% Fee</span>
+</div>
+<div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Real-time balance deduction. Current balance: <strong id="checkoutWalletBalance" style="color: var(--primary);">2,450.00 L.C.</strong>
+</div>
+</div>
+</div>
+<!-- Option B: WorldRemit Voucher -->
+<div class="payment-option-card" id="optVoucher" onclick="selectPayMethod('voucher')">
+<div class="stat-icon-wrap" style="width: 40px; height: 40px; background: #e0f2fe; color: #0284c7;">
+<span class="material-symbols-outlined">redeem</span>
+</div>
+<div style="flex: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<strong style="color: var(--primary); font-size: 0.95rem;">WorldRemit / Diaspora Voucher</strong>
+<span style="font-size: 0.72rem; background: #e0f2fe; color: #0369a1; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 12px;">Global Remit</span>
+</div>
+<div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Pay with an international sender remittance reference PIN.
+          </div>
+<div id="voucherInputGroup" style="display: none; margin-top: 0.6rem;">
+<input class="form-input" id="chkRemitCode" placeholder="Enter 10-digit WorldRemit MTCN" style="padding: 0.5rem 0.75rem; font-size: 0.85rem;" type="text"/>
+</div>
+</div>
+</div>
+<!-- Option C: Mobile Money / Card -->
+<div class="payment-option-card" id="optMobile" onclick="selectPayMethod('mobile')">
+<div class="stat-icon-wrap" style="width: 40px; height: 40px; background: #fef3c7; color: #d97706;">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div style="flex: 1;">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<strong style="color: var(--primary); font-size: 0.95rem;">EcoCash / Mobile Money / Card</strong>
+<span style="font-size: 0.72rem; background: #fef3c7; color: #92400e; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 12px;">Direct Carrier</span>
+</div>
+<div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Direct mobile prompt on Econet, NetOne, or international Visa/Mastercard.
+          </div>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+<button class="btn btn-outline" onclick="goToCheckoutStep(1)">
+<span class="material-symbols-outlined" style="font-size: 1rem;">arrow_back</span> Back
+          </button>
+<button class="btn btn-primary" onclick="goToCheckoutStep(3)">
+            Review Order
+            <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Review & Security Confirmation -->
+<div id="checkoutStep3" style="display: none;">
+<h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.25rem;">Step 3: Review &amp; Security Confirmation</h3>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.25rem;">Confirm details before signing the decentralized escrow contract.</p>
+<!-- Itemized Breakdown -->
+<div style="background: #f8faf9; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 1.25rem; margin-bottom: 1.25rem;">
+<div style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.75rem; letter-spacing: 0.5px;">Order Summary</div>
+<div id="chkReviewItems" style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.75rem; border-bottom: 1px solid #e2e8e5; padding-bottom: 0.75rem;">
+<!-- Dynamic summary rows -->
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+<span>Delivery Hub Dispatch:</span>
+<span id="chkReviewDestination">Harare Central Hub</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.25rem;">
+<span>Payment Settlement:</span>
+<span id="chkReviewMethod" style="font-weight: 700; color: var(--accent);">Flow Super-Wallet</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+<span>Network &amp; Escrow Fees:</span>
+<span style="color: #059669; font-weight: 600;">$0.00 (Zero Fee)</span>
+</div>
+<div style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 800; color: var(--primary); border-top: 1px dashed var(--border); padding-top: 0.6rem;">
+<span>Total Due:</span>
+<span id="chkReviewGrandTotal">45.00 L.C.</span>
+</div>
+</div>
+<!-- Buyer Protection Badge -->
+<div style="display: flex; align-items: center; gap: 0.75rem; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 12px; padding: 0.85rem; margin-bottom: 1.25rem;">
+<span class="material-symbols-outlined" style="color: #059669; font-size: 1.8rem;">shield_check</span>
+<div style="font-size: 0.8rem; color: #065f46;">
+<strong>Flow Escrow Buyer Protection Guaranteed:</strong> Funds remain securely locked until you inspect and verify delivery via the Flow app.
+          </div>
+</div>
+<!-- PIN or Biometric Confirmation -->
+<div class="form-group" style="margin-bottom: 1rem;">
+<label class="form-label">Confirm Flow 4-Digit Security PIN</label>
+<div style="display: flex; gap: 0.5rem;">
+<input class="form-input" id="chkSecurityPin" maxlength="4" placeholder="••••" style="letter-spacing: 0.5rem; text-align: center; font-size: 1.2rem; font-weight: 800; max-width: 140px;" type="password" value="1234"/>
+<button class="btn btn-outline" onclick="showToast('Biometric sensor ready (Touch ID / Face ID simulated)')" style="flex: 1;" type="button">
+<span class="material-symbols-outlined" style="color: var(--accent);">fingerprint</span> Authenticate Biometrics
+              </button>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem;">
+<button class="btn btn-outline" onclick="goToCheckoutStep(2)">
+<span class="material-symbols-outlined" style="font-size: 1rem;">arrow_back</span> Back
+          </button>
+<button class="btn btn-accent" id="confirmPaymentBtn" onclick="executeFinalOrder()" style="padding: 0.75rem 1.75rem;">
+<span class="material-symbols-outlined">lock</span> Authorize Payment
+          </button>
+</div>
+</div>
+<!-- STEP 4: Order Confirmation & Receipt -->
+<div id="checkoutStep4" style="display: none; text-align: center;">
+<div class="success-checkmark">
+<span class="material-symbols-outlined" style="font-size: 3rem;">check</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.7rem; margin-bottom: 0.35rem;">Order Successfully Placed!</h3>
+<div id="receiptOrderId" style="display: inline-block; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 20px; padding: 0.3rem 0.9rem; font-size: 0.85rem; font-weight: 700; color: #047857; margin-bottom: 1rem;">
+          Order #FLW-89412
+        </div>
+<p style="color: var(--text-muted); font-size: 0.9rem; max-width: 440px; margin: 0 auto 1.5rem auto;">
+          Funds have been allocated to the Flow Escrow smart contract. Your merchant has been notified to dispatch. Super-Wallet balance and activity statement have been updated in real time.
+        </p>
+<!-- Tracker Card -->
+<div style="background: #f8faf9; border-radius: var(--radius-md); border: 1px solid var(--border); padding: 1rem 1.25rem; text-align: left; margin-bottom: 1.5rem;">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+<strong style="font-size: 0.88rem; color: var(--primary);">Live Delivery Tracker</strong>
+<span style="font-size: 0.75rem; color: var(--accent); font-weight: 700;">Dispatched Soon</span>
+</div>
+<div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+<span class="material-symbols-outlined" style="color: var(--accent); font-size: 1.1rem;">local_shipping</span>
+<span id="receiptDeliveryHub">Harare Central Hub • Estimated transit 24h</span>
+</div>
+</div>
+<div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+<button class="btn btn-outline" onclick="downloadReceipt()">
+<span class="material-symbols-outlined">receipt_long</span> Download Receipt (.txt)
+          </button>
+<button class="btn btn-primary" onclick="closeCheckoutModal(); switchTab('hub');">
+<span class="material-symbols-outlined">storefront</span> Return to Business Hub
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Beta Signup Modal -->
+<div class="modal-overlay" id="betaModal" onclick="if(event.target===this) closeBetaModal()">
+<div class="modal-box">
+<button class="modal-close-btn" onclick="closeBetaModal()">×</button>
+<div id="betaFormContent">
+<div style="width: 52px; height: 52px; border-radius: 14px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+<span class="material-symbols-outlined" style="font-size: 2rem;">rocket_launch</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.6rem; margin-bottom: 0.4rem;">Join the Flow Beta</h3>
+<p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.5rem;">
+          Be the first to experience borderless payments, unified community networking, and instant marketplace commerce.
+        </p>
+<form onsubmit="handleBetaSubmit(event)">
+<div class="form-group">
+<label class="form-label">Full Name</label>
+<input class="form-input" id="betaName" placeholder="e.g. Tendai Moyo" required="" type="text"/>
+</div>
+<div class="form-group">
+<label class="form-label">Email Address</label>
+<input class="form-input" id="betaEmail" placeholder="tendai@example.com" required="" type="email"/>
+</div>
+<div class="form-group">
+<label class="form-label">Phone Number (with country code)</label>
+<input class="form-input" id="betaPhone" placeholder="+263 77 123 4567" required="" type="tel"/>
+</div>
+<button class="btn btn-accent" style="width: 100%; padding: 0.8rem; font-size: 1rem; margin-top: 0.5rem;" type="submit">
+            Submit Application
+          </button>
+</form>
+<div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.85rem;">
+          By joining, you agree to our Beta Privacy Terms and early feature telemetry.
+        </div>
+</div>
+<div id="betaSuccessContent" style="display: none;">
+<div class="success-checkmark">
+<span class="material-symbols-outlined" style="font-size: 3rem;">check</span>
+</div>
+<h3 style="color: var(--primary); font-size: 1.6rem; margin-bottom: 0.5rem;">You're on the list!</h3>
+<p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          Thank you for supporting <strong>Flow</strong>! We've received your registration details. Look out for an invitation email and SMS TestFlight link in your inbox shortly.
+        </p>
+<button class="btn btn-primary" onclick="closeBetaModal()" style="width: 100%;">Back to Flow</button>
+</div>
+</div>
+</div>
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+<span class="material-symbols-outlined" style="color: #34d399;">check_circle</span>
+<span id="toastMsg">Action completed</span>
+</div>
+<!-- Save as HTML Download Button -->
+<button class="floating-export-btn" onclick="downloadBundleHTML()">
+<span class="material-symbols-outlined">download</span>
+    Download Flow App (.html)
+  </button>
+<!-- Footer -->
+<footer>
+<div class="brand-container" style="justify-content: center; margin-bottom: 1.25rem;">
+<div class="brand-logo-mark" style="width: 30px; height: 30px; font-size: 1rem;">F</div>
+<div class="brand-text" style="font-size: 1.25rem;">Flow</div>
+</div>
+<div class="footer-links">
+<a href="#" onclick="openBetaModal(); return false;">Privacy Policy</a>
+<a href="#" onclick="openBetaModal(); return false;">Terms of Service</a>
+<a href="#" onclick="openBetaModal(); return false;">Security &amp; Compliance</a>
+<a href="#" onclick="openBetaModal(); return false;">Business API</a>
+<a href="#" onclick="openBetaModal(); return false;">Contact Support</a>
+</div>
+<p style="font-size: 0.85rem; color: #64748b;">
+      together we are Flow. Powered by O'Riley Foundation © 2026. Made with you in mind.
+    </p>
+</footer>
+<script>
+    // Tab Navigation Logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('active');
+        }
+      });
+      const activeSection = document.getElementById('tab-' + tabId);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Modal Control
+    function openBetaModal() {
+      document.getElementById('betaFormContent').style.display = 'block';
+      document.getElementById('betaSuccessContent').style.display = 'none';
+      document.getElementById('betaModal').classList.add('active');
+    }
+
+    function closeBetaModal() {
+      document.getElementById('betaModal').classList.remove('active');
+    }
+
+    // Beta Form Submission & Green Checkmark
+    function handleBetaSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('betaName').value;
+      const email = document.getElementById('betaEmail').value;
+      const phone = document.getElementById('betaPhone').value;
+
+      console.log('Registered Beta User:', { name, email, phone });
+
+      // Show success view with green checkmark
+      document.getElementById('betaFormContent').style.display = 'none';
+      document.getElementById('betaSuccessContent').style.display = 'block';
+    }
+
+    // Feed Interactions
+    function toggleLike(btn) {
+      const isLiked = btn.classList.contains('liked');
+      const countSpan = btn.querySelector('span:last-child');
+      let count = parseInt(countSpan.textContent) || 0;
+
+      if (isLiked) {
+        btn.classList.remove('liked');
+        countSpan.textContent = Math.max(0, count - 1);
+      } else {
+        btn.classList.add('liked');
+        countSpan.textContent = count + 1;
+        showToast('Appreciated post!');
+      }
+    }
+
+    function publishPost() {
+      const input = document.getElementById('composerInput');
+      const text = input.value.trim();
+      if (!text) {
+        showToast('Please type your moment before publishing.');
+        return;
+      }
+
+      const container = document.getElementById('postsContainer');
+      const newPost = document.createElement('div');
+      newPost.className = 'feed-item';
+      newPost.innerHTML = `
+        <div class="feed-author-row">
+          <div class="feed-author-meta">
+            <div class="avatar" style="background: #10b981;">Y</div>
+            <div>
+              <div class="author-name">You (Beta Tester) <span class="material-symbols-outlined" style="font-size: 1rem; color: #10b981;">check_circle</span></div>
+              <div class="author-handle">@you • Just now</div>
+            </div>
+          </div>
+          <span class="post-time">Just now</span>
+        </div>
+        <div class="feed-content">${escapeHTML(text)}</div>
+        <div class="feed-interactions">
+          <button class="interaction-btn" onclick="toggleLike(this)">
+            <span class="material-symbols-outlined">favorite</span> <span>0</span>
+          </button>
+          <button class="interaction-btn" onclick="openBetaModal()">
+            <span class="material-symbols-outlined">chat_bubble</span> <span>0 Replies</span>
+          </button>
+          <button class="interaction-btn" onclick="showToast('Post link copied to clipboard')">
+            <span class="material-symbols-outlined">share</span>
+          </button>
+        </div>
+      `;
+
+      container.prepend(newPost);
+      input.value = '';
+      showToast('Post published to Flow community!');
+    }
+
+    // ==========================================
+    // BUSINESS HUB: PRODUCTS, CART & CHECKOUT
+    // ==========================================
+    const catalogProducts = [
+      {
+        id: "prod-solar",
+        name: "EcoSolar Home Kit 5kVA",
+        merchant: "Highland Solar & Tech",
+        category: "Clean Energy",
+        price: 450.00,
+        currency: "L.C.",
+        icon: "solar_power",
+        desc: "Hybrid inverter + 5.1kWh lithium battery backup with remote telemetry and rapid installation voucher."
+      },
+      {
+        id: "prod-produce",
+        name: "Harare Organic Produce Box",
+        merchant: "Zambezi Fresh Produce",
+        category: "Farm-to-Door",
+        price: 45.00,
+        currency: "L.C.",
+        icon: "nutrition",
+        desc: "25kg harvest basket: heirloom tomatoes, bell peppers, fresh corn & macadamias delivered same-day."
+      },
+      {
+        id: "prod-fiber",
+        name: "FastTech Fiber Router (WiFi 6)",
+        merchant: "FastTech Regional Fiber",
+        category: "Hardware",
+        price: 85.00,
+        currency: "L.C.",
+        icon: "router",
+        desc: "Dual-band gigabit mesh router preconfigured for instantaneous Flow peer-to-peer micro-billing."
+      },
+      {
+        id: "prod-artisan",
+        name: "Shona Heritage Soapstone Sculpture",
+        merchant: "Artisan Craft Guild",
+        category: "Art & Culture",
+        price: 65.00,
+        currency: "L.C.",
+        icon: "palette",
+        desc: "Authentic hand-carved Chitungwiza soapstone art piece signed with Flow digital authenticity NFT."
+      }
+    ];
+
+    // Initial Cart State
+    let cart = [
+      {
+        productId: "prod-produce",
+        qty: 1
+      }
+    ];
+
+    // Render Hub Products
+    function renderCatalog() {
+      const container = document.getElementById('productGridContainer');
+      if (!container) return;
+
+      container.innerHTML = catalogProducts.map((p, index) => `
+        <div class="product-card">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div class="prod-icon-box">
+                <span class="material-symbols-outlined" style="font-size: 1.7rem;">${p.icon}</span>
+              </div>
+              <span class="biz-badge">${p.category}</span>
+            </div>
+            <h4 style="color: var(--primary); font-size: 1.05rem; margin-bottom: 0.25rem;">${p.name}</h4>
+            <div style="font-size: 0.78rem; color: var(--accent); font-weight: 700; margin-bottom: 0.5rem;">
+              By ${p.merchant}
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.45;">
+              ${p.desc}
+            </p>
+          </div>
+          <div style="border-top: 1px solid #f1f5f3; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary);">
+                ${p.price.toFixed(2)} <span style="font-size: 0.85rem; font-weight: 600;">L.C.</span>
+              </div>
+              <div style="font-size: 0.7rem; color: #94a3b8;">≈ $${p.price.toFixed(2)} USD</div>
+            </div>
+            <div style="display: flex; gap: 0.4rem;">
+              <button class="btn btn-outline" style="padding: 0.4rem 0.7rem; font-size: 0.78rem;" onclick="addToCart('${p.id}')">
+                <span class="material-symbols-outlined" style="font-size: 1rem;">add_shopping_cart</span>
+              </button>
+              <button class="btn btn-primary" style="padding: 0.4rem 0.85rem; font-size: 0.8rem;" onclick="quickBuy(${index})">
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(productId) {
+      const existing = cart.find(item => item.productId === productId);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ productId, qty: 1 });
+      }
+      updateCartUI();
+      showToast('Item added to your order cart!');
+    }
+
+    function quickBuy(index) {
+      const prod = catalogProducts[index];
+      cart = [{ productId: prod.id, qty: 1 }];
+      updateCartUI();
+      startCheckout();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+      let subtotal = 0;
+
+      cart.forEach(item => {
+        const prod = catalogProducts.find(p => p.id === item.productId);
+        if (prod) {
+          subtotal += prod.price * item.qty;
+        }
+      });
+
+      // Update counters
+      const navCount = document.getElementById('navCartCount');
+      if (navCount) navCount.textContent = totalItems;
+
+      const hubCount = document.getElementById('hubCartCount');
+      if (hubCount) hubCount.textContent = totalItems;
+
+      const floatBadge = document.getElementById('floatingCartBadge');
+      if (floatBadge) floatBadge.textContent = `${totalItems} item${totalItems === 1 ? '' : 's'}`;
+
+      const floatTotal = document.getElementById('floatingCartTotal');
+      if (floatTotal) floatTotal.textContent = `${subtotal.toFixed(2)} L.C.`;
+
+      const subtotalEl = document.getElementById('cartDrawerSubtotal');
+      if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(2)} L.C.`;
+
+      const totalEl = document.getElementById('cartDrawerTotal');
+      if (totalEl) totalEl.textContent = `${subtotal.toFixed(2)} L.C. ($${subtotal.toFixed(2)} USD)`;
+
+      // Render Drawer items
+      const drawerList = document.getElementById('cartItemList');
+      if (drawerList) {
+        if (cart.length === 0) {
+          drawerList.innerHTML = `
+            <div style="text-align: center; padding: 3rem 1rem; color: var(--text-muted);">
+              <span class="material-symbols-outlined" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 0.5rem;">remove_shopping_cart</span>
+              <p>Your bag is currently empty.</p>
+              <button class="btn btn-outline" style="margin-top: 1rem;" onclick="closeCartDrawer(); switchTab('hub');">Explore Products</button>
+            </div>
+          `;
+        } else {
+          drawerList.innerHTML = cart.map(item => {
+            const p = catalogProducts.find(cp => cp.id === item.productId);
+            if (!p) return '';
+            const linePrice = (p.price * item.qty).toFixed(2);
+            return `
+              <div class="cart-item-row">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <div class="prod-icon-box" style="width: 38px; height: 38px; margin: 0;">
+                    <span class="material-symbols-outlined" style="font-size: 1.25rem;">${p.icon}</span>
+                  </div>
+                  <div>
+                    <div style="font-weight: 700; font-size: 0.88rem; color: var(--primary);">${p.name}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted);">${p.price.toFixed(2)} L.C. each</div>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                  <div class="cart-qty-ctrl">
+                    <button class="cart-qty-btn" onclick="modifyCartQty('${p.id}', -1)">-</button>
+                    <span style="font-size: 0.85rem; font-weight: 700; min-width: 16px; text-align: center;">${item.qty}</span>
+                    <button class="cart-qty-btn" onclick="modifyCartQty('${p.id}', 1)">+</button>
+                  </div>
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary); min-width: 60px; text-align: right;">
+                    ${linePrice} L.C.
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+        }
+      }
+    }
+
+    function modifyCartQty(productId, delta) {
+      const itemIndex = cart.findIndex(i => i.productId === productId);
+      if (itemIndex > -1) {
+        cart[itemIndex].qty += delta;
+        if (cart[itemIndex].qty <= 0) {
+          cart.splice(itemIndex, 1);
+        }
+      }
+      updateCartUI();
+    }
+
+    function openCartDrawer() {
+      updateCartUI();
+      document.getElementById('cartOverlay').classList.add('active');
+    }
+
+    function closeCartDrawer() {
+      document.getElementById('cartOverlay').classList.remove('active');
+    }
+
+    // ==========================================
+    // MULTI-STEP CHECKOUT CONTROLLER
+    // ==========================================
+    let checkoutStep = 1;
+    let selectedPayment = 'wallet';
+    let lastOrderDetails = null;
+
+    function startCheckout() {
+      if (cart.length === 0) {
+        showToast('Your cart is empty. Add a product first!');
+        return;
+      }
+      closeCartDrawer();
+      goToCheckoutStep(1);
+      document.getElementById('checkoutWalletBalance').textContent = `${currentBalance.toFixed(2)} L.C.`;
+      document.getElementById('checkoutModal').classList.add('active');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('active');
+    }
+
+    function goToCheckoutStep(step) {
+      checkoutStep = step;
+
+      // Hide all steps
+      for (let s = 1; s <= 4; s++) {
+        const el = document.getElementById('checkoutStep' + s);
+        if (el) el.style.display = 'none';
+
+        const node = document.getElementById('stepNode' + s);
+        if (node) {
+          node.classList.remove('active', 'completed');
+          if (s < step) {
+            node.classList.add('completed');
+          } else if (s === step) {
+            node.classList.add('active');
+          }
+        }
+      }
+
+      // Show targeted step
+      const currentEl = document.getElementById('checkoutStep' + step);
+      if (currentEl) currentEl.style.display = 'block';
+
+      // Step 3 Review population
+      if (step === 3) {
+        populateReviewStep();
+      }
+    }
+
+    function selectPayMethod(method) {
+      selectedPayment = method;
+      document.getElementById('optWallet').classList.remove('selected');
+      document.getElementById('optVoucher').classList.remove('selected');
+      document.getElementById('optMobile').classList.remove('selected');
+
+      const voucherInput = document.getElementById('voucherInputGroup');
+      if (voucherInput) voucherInput.style.display = 'none';
+
+      if (method === 'wallet') {
+        document.getElementById('optWallet').classList.add('selected');
+      } else if (method === 'voucher') {
+        document.getElementById('optVoucher').classList.add('selected');
+        if (voucherInput) voucherInput.style.display = 'block';
+      } else if (method === 'mobile') {
+        document.getElementById('optMobile').classList.add('selected');
+      }
+    }
+
+    function calculateCartTotal() {
+      return cart.reduce((sum, item) => {
+        const p = catalogProducts.find(cp => cp.id === item.productId);
+        return sum + (p ? p.price * item.qty : 0);
+      }, 0);
+    }
+
+    function populateReviewStep() {
+      const itemsContainer = document.getElementById('chkReviewItems');
+      const total = calculateCartTotal();
+      const loc = document.getElementById('chkLocation').value;
+
+      let itemsHtml = cart.map(item => {
+        const p = catalogProducts.find(cp => cp.id === item.productId);
+        if (!p) return '';
+        return `
+          <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+            <span>${p.name} × ${item.qty}</span>
+            <span style="font-weight: 700;">${(p.price * item.qty).toFixed(2)} L.C.</span>
+          </div>
+        `;
+      }).join('');
+
+      itemsContainer.innerHTML = itemsHtml;
+      document.getElementById('chkReviewDestination').textContent = loc;
+
+      let payName = "Flow Super-Wallet";
+      if (selectedPayment === 'voucher') payName = "WorldRemit Voucher";
+      if (selectedPayment === 'mobile') payName = "EcoCash / Mobile Network";
+
+      document.getElementById('chkReviewMethod').textContent = payName;
+      document.getElementById('chkReviewGrandTotal').textContent = `${total.toFixed(2)} L.C. ($${total.toFixed(2)} USD)`;
+
+      // Super-wallet balance validation check
+      const btn = document.getElementById('confirmPaymentBtn');
+      if (selectedPayment === 'wallet' && currentBalance < total) {
+        btn.innerHTML = `<span class="material-symbols-outlined">warning</span> Top-up needed (Balance: ${currentBalance.toFixed(2)} L.C.)`;
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+      } else {
+        btn.innerHTML = `<span class="material-symbols-outlined">lock</span> Authorize Payment (${total.toFixed(2)} L.C.)`;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      }
+    }
+
+    function executeFinalOrder() {
+      const total = calculateCartTotal();
+      const name = document.getElementById('chkCustName').value || 'Tendai Moyo';
+      const hub = document.getElementById('chkLocation').value;
+      const orderNum = 'FLW-' + Math.floor(10000 + Math.random() * 90000);
+
+      // Handle wallet deduction and ledger dynamic update
+      if (selectedPayment === 'wallet') {
+        if (currentBalance < total) {
+          showToast('Insufficient Super-Wallet balance. Please top up or choose another method.');
+          return;
+        }
+
+        currentBalance -= total;
+        // Update wallet displays
+        document.getElementById('walletBalanceDisplay').innerHTML = `+${currentBalance.toFixed(2)} <span style="font-size: 1.5rem; font-weight: 600; color: #a7f3d0;">L.C.</span>`;
+        document.getElementById('walletEquivalentDesc').textContent = `≈ $${currentBalance.toFixed(2)} USD Equivalent • Protected with Multi-Sig`;
+        
+        const checkingEl = document.querySelector('.checking-balance-num');
+        if (checkingEl) {
+          const checkNum = Math.max(0, 1850.00 - (2450.00 - currentBalance));
+          checkingEl.textContent = `${checkNum.toFixed(2)} L.C.`;
+        }
+
+        // Add to recent activity table
+        const tbody = document.getElementById('txBody');
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ', ' + ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+        
+        const mainItem = catalogProducts.find(p => p.id === cart[0]?.productId)?.name || 'Merchant Items';
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td><strong>Business Hub Escrow: ${escapeHTML(mainItem)}</strong></td>
+          <td>Flow Escrow Checkout</td>
+          <td>${dateStr}</td>
+          <td><span class="tx-type-badge tx-debit">Merchant Escrow</span></td>
+          <td style="text-align: right; font-weight: 700; color: #b91c1c;">-${total.toFixed(2)} L.C.</td>
+        `;
+        tbody.prepend(newRow);
+      }
+
+      // Save order metadata
+      lastOrderDetails = {
+        orderId: orderNum,
+        customer: name,
+        hub: hub,
+        amount: total,
+        payment: selectedPayment,
+        date: new Date().toLocaleString(),
+        items: [...cart]
+      };
+
+      // Set Receipt Info
+      document.getElementById('receiptOrderId').textContent = `Order #${orderNum}`;
+      document.getElementById('receiptDeliveryHub').textContent = `${hub} • Escrow Dispatched`;
+
+      // Clear Cart
+      cart = [];
+      updateCartUI();
+
+      // Advance to step 4
+      goToCheckoutStep(4);
+      showToast('Payment confirmed & Escrow smart contract funded!');
+    }
+
+    function downloadReceipt() {
+      if (!lastOrderDetails) {
+        showToast('No recent order found');
+        return;
+      }
+
+      const content = `
+=========================================
+        FLOW ECOSYSTEM RECEIPT
+=========================================
+Order ID: #${lastOrderDetails.orderId}
+Date: ${lastOrderDetails.date}
+Customer: ${lastOrderDetails.customer}
+Delivery Hub: ${lastOrderDetails.hub}
+Settlement: ${lastOrderDetails.payment.toUpperCase()} (Escrow Protected)
+Total Paid: ${lastOrderDetails.amount.toFixed(2)} L.C. ($${lastOrderDetails.amount.toFixed(2)} USD)
+
+Status: 256-bit Encrypted Escrow Active
+Thank you for supporting verified African merchants on Flow.
+together we are Flow.
+=========================================
+      `.trim();
+
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Flow_Receipt_${lastOrderDetails.orderId}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Receipt downloaded!');
+    }
+
+    // ==========================================
+    // SUPER-WALLET SIMULATION LOGIC
+    // ==========================================
+    let currentBalance = 2450.00;
+    function depositFunds() {
+      const added = 100.00;
+      currentBalance += added;
+      document.getElementById('walletBalanceDisplay').innerHTML = `+${currentBalance.toFixed(2)} <span style="font-size: 1.5rem; font-weight: 600; color: #a7f3d0;">L.C.</span>`;
+      document.getElementById('walletEquivalentDesc').textContent = `≈ $${currentBalance.toFixed(2)} USD Equivalent • Protected with Multi-Sig`;
+      
+      const tbody = document.getElementById('txBody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td><strong>Direct Bank Inbound</strong></td>
+        <td>Instant Deposit</td>
+        <td>Just now</td>
+        <td><span class="tx-type-badge tx-credit">Received</span></td>
+        <td style="text-align: right; font-weight: 700; color: #047857;">+100.00 L.C.</td>
+      `;
+      tbody.prepend(newRow);
+      showToast('Successfully topped up +100.00 L.C.');
+    }
+
+    function sendTransfer() {
+      if (currentBalance < 25) {
+        showToast('Insufficient balance for simulation.');
+        return;
+      }
+      currentBalance -= 25.00;
+      document.getElementById('walletBalanceDisplay').innerHTML = `+${currentBalance.toFixed(2)} <span style="font-size: 1.5rem; font-weight: 600; color: #a7f3d0;">L.C.</span>`;
+      document.getElementById('walletEquivalentDesc').textContent = `≈ $${currentBalance.toFixed(2)} USD Equivalent • Protected with Multi-Sig`;
+      
+      const tbody = document.getElementById('txBody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td><strong>Simulated QR Transfer</strong></td>
+        <td>Flow P2P</td>
+        <td>Just now</td>
+        <td><span class="tx-type-badge tx-debit">Transfer</span></td>
+        <td style="text-align: right; font-weight: 700; color: #b91c1c;">-25.00 L.C.</td>
+      `;
+      tbody.prepend(newRow);
+      showToast('Sent 25.00 L.C. instantly!');
+    }
+
+    // FlowAI Queries
+    function askAi(query) {
+      document.getElementById('aiInput').value = query;
+      sendCustomAiQuery();
+    }
+
+    function sendCustomAiQuery() {
+      const input = document.getElementById('aiInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const box = document.getElementById('aiResponseBox');
+      box.innerHTML = `<em>Thinking...</em>`;
+      setTimeout(() => {
+        if (text.toLowerCase().includes('escrow') || text.toLowerCase().includes('protect')) {
+          box.innerHTML = `<strong>FlowAI Security Protocol:</strong> All Business Hub purchases use dual-signature smart escrow. The merchant cannot release payment until your biometric signature confirms satisfactory physical delivery.`;
+        } else if (text.toLowerCase().includes('worldremit') || text.toLowerCase().includes('fee')) {
+          box.innerHTML = `<strong>FlowAI Insights:</strong> Inbound transfers from WorldRemit to Flow Super-Wallets are zero-fee on receiver side, settling instantly into your L.C. / USD balances.`;
+        } else if (text.toLowerCase().includes('solar')) {
+          box.innerHTML = `<strong>FlowAI Recommendations:</strong> Found 2 verified solar providers in Gweru and Harare on the Business Hub: <em>Highland Solar & Tech</em> (4.9★) offers certified 5kVA installations with direct Flow escrow.`;
+        } else {
+          box.innerHTML = `<strong>FlowAI Assistant:</strong> "${escapeHTML(text)}" — I've logged this inquiry into your Flow intelligence stream. Register your beta details to unlock full predictive assistance on iOS & Android!`;
+        }
+      }, 400);
+      input.value = '';
+    }
+
+    // Toast Utility
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, tag => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "'": '&#39;',
+        '"': '&quot;'
+      }[tag] || tag));
+    }
+
+    // Single-File HTML Exporter / Bundle Downloader
+    function downloadBundleHTML() {
+      const docHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([docHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'flow_unified_app.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Downloaded flow_unified_app.html!');
+    }
+
+    // Initialize Catalog and Cart on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+      updateCartUI();
+    });
+  </script>
+</body></html>

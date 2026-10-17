@@ -1,0 +1,469 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Flow Community Feed</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&amp;family=Syne:wght@700;800&amp;family=Fraunces:ital,wght@0,400;1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#002018",
+                "secondary": "#006c44",
+                "outline": "#717975",
+                "on-tertiary-fixed-variant": "#574500",
+                "on-secondary-fixed": "#002112",
+                "premium-gold": "#FFD966",
+                "inverse-primary": "#a2d0bf",
+                "primary": "#00241b",
+                "inverse-on-surface": "#e1f6e9",
+                "primary-container": "#0b3b2f",
+                "on-primary-container": "#78a696",
+                "surface-variant": "#d3e7db",
+                "surface-dim": "#cbdfd3",
+                "mint-mist": "#F4F9F6",
+                "on-primary-fixed-variant": "#224e42",
+                "inverse-surface": "#23342c",
+                "on-secondary-fixed-variant": "#005232",
+                "surface-tint": "#3b6759",
+                "leaf-green": "#2E9E6B",
+                "surface-container-high": "#d9ede1",
+                "tertiary-container": "#caa83a",
+                "on-tertiary": "#ffffff",
+                "on-background": "#0e1f17",
+                "on-tertiary-container": "#4e3d00",
+                "surface": "#eafef2",
+                "surface-bright": "#eafef2",
+                "on-error-container": "#93000a",
+                "tertiary-fixed-dim": "#e7c353",
+                "surface-container": "#def3e6",
+                "ink": "#061710",
+                "secondary-fixed": "#8df8bd",
+                "on-surface": "#0e1f17",
+                "forest-slate": "#3C5A4F",
+                "forest-deep": "#0B3B2F",
+                "tertiary": "#735c00",
+                "surface-container-highest": "#d3e7db",
+                "on-surface-variant": "#414945",
+                "secondary-container": "#8df8bd",
+                "error": "#ba1a1a",
+                "error-container": "#ffdad6",
+                "primary-fixed-dim": "#a2d0bf",
+                "tertiary-fixed": "#ffe088",
+                "on-tertiary-fixed": "#241a00",
+                "background": "#eafef2",
+                "primary-fixed": "#bdeddb",
+                "on-secondary-container": "#007349",
+                "secondary-fixed-dim": "#71dba2",
+                "outline-variant": "#c0c8c4",
+                "surface-container-low": "#e4f9ec",
+                "on-primary": "#ffffff",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-padding-mobile": "20px",
+                "stack-md": "16px",
+                "stack-sm": "8px",
+                "container-padding-desktop": "40px",
+                "stack-lg": "32px",
+                "gutter": "24px",
+                "base": "8px",
+                "section-gap": "80px"
+            },
+            "fontFamily": {
+                "body-lg": ["DM Sans"],
+                "label-md": ["DM Sans"],
+                "headline-md": ["Syne"],
+                "body-md": ["DM Sans"],
+                "headline-lg-mobile": ["Syne"],
+                "subheading-italic": ["Fraunces"],
+                "headline-lg": ["Syne"],
+                "caption": ["DM Sans"]
+            },
+            "fontSize": {
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                "headline-md": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                "subheading-italic": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                "headline-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "caption": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(46, 158, 107, 0.1);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2E9E6B;
+            border-radius: 10px;
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-modal {
+            animation: fadeInScale 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-mint-mist font-body-md text-on-surface antialiased overflow-x-hidden">
+<div class="grain-overlay"></div>
+<!-- Beta Registration Modal -->
+<div class="fixed inset-0 z-[100] hidden" id="beta-modal">
+<div class="absolute inset-0 bg-forest-deep/60 backdrop-blur-sm" onclick="toggleBetaModal()"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-container-padding-mobile">
+<!-- Form Screen -->
+<div class="bg-white rounded-[2rem] p-8 shadow-2xl animate-modal" id="modal-form">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-2xl text-forest-deep">Join the Beta</h2>
+<button class="text-outline-variant hover:text-forest-deep transition-colors" onclick="toggleBetaModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-on-surface-variant mb-6">Get early access to Flow and help shape the future of our community.</p>
+<form class="flex flex-col gap-4" id="beta-form" onsubmit="handleBetaSubmit(event)">
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-xs text-forest-slate uppercase ml-1">Full Name</label>
+<input class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-leaf-green/50 outline-none transition-all" placeholder="John Doe" required="" type="text">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-xs text-forest-slate uppercase ml-1">Email Address</label>
+<input class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-leaf-green/50 outline-none transition-all" placeholder="john@example.com" required="" type="email">
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-xs text-forest-slate uppercase ml-1">Phone Number</label>
+<input class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-leaf-green/50 outline-none transition-all" placeholder="+263 ..." required="" type="tel">
+</div>
+<button class="mt-4 bg-leaf-green text-white font-bold py-4 rounded-xl hover:bg-forest-deep transition-all shadow-lg active:scale-95" type="submit">Request Invite</button>
+</form>
+</div>
+<!-- Success Screen -->
+<div class="bg-white rounded-[2rem] p-12 shadow-2xl animate-modal hidden flex flex-col items-center text-center" id="modal-success">
+<div class="w-20 h-20 bg-leaf-green rounded-full flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined text-4xl">check</span>
+</div>
+<h2 class="font-headline-md text-2xl text-forest-deep mb-2">You're on the list!</h2>
+<p class="font-body-md text-on-surface-variant mb-8">We've received your registration. Keep an eye on your inbox for your exclusive invite link.</p>
+<button class="bg-forest-deep text-white px-8 py-3 rounded-full font-label-md" onclick="toggleBetaModal()">Got it</button>
+</div>
+</div>
+</div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-container-desktop max-w-7xl mx-auto h-20 bg-surface/70 dark:bg-forest-deep/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm left-1/2 -translate-x-1/2">
+<div class="flex flex-col"><span class="font-headline-md text-headline-md font-bold text-forest-deep dark:text-surface-bright leading-none">Flow</span>
+<span class="text-[10px] tracking-widest uppercase font-bold text-leaf-green opacity-80">LIFE IN MOTION</span></div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-md text-label-md text-leaf-green font-bold border-b-2 border-leaf-green pb-1 transition-colors duration-200" href="#">Community</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-leaf-green transition-colors duration-200" href="#">Features</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-leaf-green transition-colors duration-200" href="#">Download</a>
+</nav>
+<div class="flex items-center gap-stack-md">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-leaf-green transition-colors" href="https://zimlive.app/#account-access">Log in</a>
+<a class="bg-forest-deep text-white px-6 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 active:scale-95 transition-all shadow-md" href="https://zimlive.app/#account-access">Create account</a>
+</div>
+</header>
+<main class="pt-32 pb-stack-lg max-w-7xl mx-auto px-container-padding-mobile md:px-container-padding-desktop flex flex-col md:flex-row gap-gutter">
+<!-- Left Column: Branding & Intro -->
+<div class="md:w-1/3 flex flex-col gap-stack-md md:sticky md:top-32 h-fit">
+<span class="font-label-md text-label-md text-leaf-green uppercase tracking-widest">Social Feed</span>
+<h1 class="font-headline-md text-headline-md text-forest-deep leading-tight">A community that <span class="text-leaf-green">moves together.</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
+                Share moments, ask questions, discover what's happening near you — all in one feed built for real conversations.
+            </p>
+<!-- Discovery Hub -->
+<div class="mt-stack-lg flex flex-col gap-stack-sm">
+<span class="font-label-md text-label-md text-forest-slate uppercase opacity-60">Discovery Hub</span>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-leaf-green text-white text-caption font-bold shadow-sm">National Feed</button>
+<button class="px-4 py-2 rounded-full bg-white border border-outline-variant/30 text-on-surface-variant text-caption font-bold hover:bg-surface transition-colors">Gweru Local</button>
+<button class="px-4 py-2 rounded-full bg-white border border-outline-variant/30 text-on-surface-variant text-caption font-bold hover:bg-surface transition-colors">Business Deals</button>
+<button class="px-4 py-2 rounded-full bg-white border border-outline-variant/30 text-on-surface-variant text-caption font-bold hover:bg-surface transition-colors">Marketplace</button>
+</div>
+</div>
+<!-- New Download Section -->
+<div class="mt-12 bg-white/50 border border-outline-variant/20 rounded-3xl p-6 flex flex-col gap-6">
+<div class="flex flex-col gap-2">
+<h3 class="font-headline-md text-xl text-forest-deep">Get the App</h3>
+<p class="text-caption text-on-surface-variant">Stay connected on the go with our mobile app. Scan the QR code or click below.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="p-2 bg-white rounded-xl shadow-sm border border-outline-variant/10">
+<img alt="QR Code" class="w-20 h-20 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD62ceAysMig61-a0TSM86EhBXufi2nvOI3R46d6T4gDMAtH-jt1aULTTTriltSUybWM5LTPRgM7-i_uudiyGp0_WQP12ZgcI9r9ROVm55rQurVGx-axHEbg88CW85Q1_82Ux2BXf74pW21Lp3rlXX7p1Z142wVumq7nTPLrd-ZaDwn9U1loXV62i_cLBPnFybH4R2aXKhj_Mqo7w5BG-ZJ74MhF_Qf1e6fr0KXKDWfxJEIG3b0XhHvXUcQsfR0WXeAU1PkUUEkDbQQ">
+</div>
+<div class="flex flex-col gap-2 flex-1">
+<a class="flex items-center gap-3 bg-forest-deep text-white px-4 py-2 rounded-lg hover:bg-leaf-green transition-colors group" href="https://apps.apple.com/search?term=Flow%20O%27Riley%20Foundation" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">phone_iphone</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] uppercase font-bold opacity-60">Download on the</span>
+<span class="text-sm font-bold">App Store</span>
+</div>
+</a>
+<a class="flex items-center gap-3 bg-forest-deep text-white px-4 py-2 rounded-lg hover:bg-leaf-green transition-colors group" href="https://play.google.com/store/search?q=Flow%20O%27Riley%20Foundation&c=apps" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">google_play</span>
+<div class="flex flex-col leading-none">
+<span class="text-[8px] uppercase font-bold opacity-60">Get it on</span>
+<span class="text-sm font-bold">Google Play</span>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Feed -->
+<div class="md:w-2/3 flex flex-col gap-stack-lg">
+<!-- Create Post Card -->
+<div class="glass-card rounded-3xl p-6 shadow-xl relative overflow-hidden group">
+<div class="flex gap-4 items-start">
+<div class="w-12 h-12 rounded-full bg-leaf-green/10 flex items-center justify-center text-leaf-green border border-leaf-green/20">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="flex-1">
+<textarea class="w-full bg-white/50 border-none rounded-2xl p-4 font-body-md text-body-md focus:ring-2 focus:ring-leaf-green/20 min-h-[100px] resize-none placeholder:text-outline-variant" placeholder="Share a moment... what's on your mind?"></textarea>
+<div class="flex justify-between items-center mt-4">
+<div class="flex gap-4 text-forest-slate">
+<button class="hover:text-leaf-green transition-colors" title="Add Photo">
+<span class="material-symbols-outlined">image</span>
+</button>
+<button class="hover:text-leaf-green transition-colors" title="Voice Note">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="hover:text-leaf-green transition-colors" title="Location">
+<span class="material-symbols-outlined">location_on</span>
+</button>
+</div>
+<button class="bg-forest-deep text-white px-8 py-2.5 rounded-full font-label-md text-label-md hover:bg-leaf-green active:scale-95 transition-all shadow-md">Publish</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Feed Items -->
+<div class="flex flex-col gap-stack-md">
+<!-- Post 1 -->
+<article class="bg-white rounded-2xl p-6 border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow transition-all duration-500 opacity-100 translate-y-0">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold">S</div>
+<div>
+<h4 class="font-label-md text-label-md text-forest-deep">Samantha</h4>
+<p class="text-caption text-outline">2h ago • <span class="text-leaf-green">Harare</span></p>
+</div>
+</div>
+<button class="text-outline-variant hover:text-forest-deep">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-4">Just loaded my Flow Super-Wallet via WorldRemit! The process was so smooth 🚀 Zimbabwean fintech is really evolving.</p>
+<div class="flex items-center gap-6 text-outline">
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors group">
+<span class="material-symbols-outlined group-active:scale-125 transition-transform">favorite</span>
+<span class="text-caption font-bold">14</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-caption font-bold">Reply</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors ml-auto">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="bg-white rounded-2xl overflow-hidden border border-outline-variant/10 shadow-sm transition-all duration-500 opacity-100 translate-y-0">
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold">T</div>
+<div>
+<h4 class="font-label-md text-label-md text-forest-deep">Tinashe</h4>
+<p class="text-caption text-outline">5h ago • <span class="text-leaf-green">Gweru</span></p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-4">Looking for a solar kit in Gweru. Any leads from the community? Need something reliable for a small office setup.</p>
+</div>
+<div class="h-64 bg-surface-variant relative">
+<img alt="Solar Panels" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR_FsWA40GODJVncevAv8AdbI9efJBYn7rdtnTlRShqKTonMRGHfpPqTU8mhsbNCr8GT86RGdozp0K5K3-cQvSy1qzkHIqVI6JGbWG7m5Q1IhZo71apk9AGz-hAPZaY8Yl4l9oYHC0HIX6nxnyBzdNAsEshynEFIY93LYNQ1HQRFZxy1CEM9o4MjTTU8oEscFeHRcuQIRiCPYmqQWdf7rtduIYcEEgpP3MJA974jWs4AW26jIc-S-6NpizrwLXp_JgsKzhCMjatAUw">
+</div>
+<div class="p-6 pt-4">
+<div class="flex items-center gap-6 text-outline">
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-caption font-bold">23</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-caption font-bold">12 Replies</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Post 3 (Official Post) -->
+<article class="bg-forest-deep/5 rounded-2xl p-6 border border-leaf-green/20 shadow-sm transition-all duration-500 opacity-100 translate-y-0">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-forest-deep text-white flex items-center justify-center font-bold">Z</div>
+<div>
+<h4 class="font-label-md text-label-md text-forest-deep flex items-center gap-1">Flow Official <span class="material-symbols-outlined text-[16px] text-leaf-green" style="font-variation-settings: &quot;FILL&quot; 1;">verified</span></h4>
+<p class="text-caption text-outline">1d ago</p>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-4">Welcome to the Social Feed — share your moments, grow your business, and stay connected with fellow Zimbabweans everywhere. What are you building today?</p>
+<div class="flex items-center gap-6 text-outline">
+<button class="flex items-center gap-1.5 text-leaf-green transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-caption font-bold">128</span>
+</button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-caption font-bold">Reply</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- SideNavBar (ZimAI Assistant) - Contextual Bubble -->
+<div class="fixed bottom-8 right-8 z-50" id="ai-chat-bubble">
+<div class="hidden absolute bottom-20 right-0 w-80 bg-white/90 backdrop-blur-lg rounded-3xl shadow-2xl border border-outline-variant/20 flex flex-col overflow-hidden transition-all transform origin-bottom-right" id="chat-window">
+<div class="bg-forest-deep p-6 text-white">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-leaf-green flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md">ZimAI Assistant</h3>
+<p class="text-[10px] opacity-70">Powered by Gemini/Claude</p>
+</div>
+</div>
+</div>
+<div class="h-64 p-4 overflow-y-auto flex flex-col gap-4 bg-mint-mist/50">
+<div class="bg-white p-3 rounded-2xl rounded-bl-none shadow-sm max-w-[85%] text-caption border border-outline-variant/10">
+                    Hello! I'm ZimAI. How can I help you today?
+                </div>
+</div>
+<div class="p-4 border-t border-outline-variant/10">
+<div class="flex gap-2">
+<input class="flex-1 bg-white border-none rounded-full px-4 text-caption focus:ring-1 focus:ring-leaf-green" placeholder="Ask ZimAI..." type="text">
+<button class="w-10 h-10 rounded-full bg-leaf-green text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-16 h-16 rounded-full bg-forest-deep text-white shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all relative group" onclick="toggleChat()">
+<span class="material-symbols-outlined text-[32px]">smart_toy</span>
+<span class="absolute -top-1 -right-1 w-5 h-5 bg-leaf-green rounded-full border-2 border-white flex items-center justify-center text-[10px] font-bold">1</span>
+</button>
+</div>
+<!-- Footer -->
+<footer class="w-full py-stack-lg px-container-desktop flex flex-col items-center gap-stack-md bg-mint-mist border-t border-outline-variant/20 mt-section-gap">
+<div class="flex flex-col items-center gap-2">
+<span class="font-headline-md text-headline-md text-forest-deep leading-none">Flow</span>
+<p class="text-caption text-outline-variant font-bold uppercase tracking-widest">Together we are Flow</p>
+</div>
+<div class="flex gap-stack-lg mt-4">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Legal</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Contact</a>
+</div>
+<div class="mt-8 text-caption text-outline opacity-60">together we are Flow. Powered by O'Riley Foundation © 2026</div>
+</footer>
+<script>
+        function toggleBetaModal() {
+            const modal = document.getElementById('beta-modal');
+            const form = document.getElementById('modal-form');
+            const success = document.getElementById('modal-success');
+            
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                form.classList.remove('hidden');
+                success.classList.add('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function handleBetaSubmit(event) {
+            event.preventDefault();
+            document.getElementById('modal-form').classList.add('hidden');
+            document.getElementById('modal-success').classList.remove('hidden');
+        }
+
+        function toggleChat() {
+            const chat = document.getElementById('chat-window');
+            if (chat.classList.contains('hidden')) {
+                chat.classList.remove('hidden');
+                chat.classList.add('flex');
+            } else {
+                chat.classList.remove('flex');
+                chat.classList.add('hidden');
+            }
+        }
+
+        // Add subtle animation to feed items on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('article').forEach(el => {
+            el.classList.add('transition-all', 'duration-500', 'opacity-0', 'translate-y-4');
+            observer.observe(el);
+        });
+    </script>
+
+
+
+
+</body></html>

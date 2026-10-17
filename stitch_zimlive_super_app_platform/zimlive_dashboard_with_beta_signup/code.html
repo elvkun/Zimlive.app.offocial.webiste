@@ -1,0 +1,444 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Flow | Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Syne:wght@700;800&amp;family=Fraunces:ital,wght@1,400&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#002018",
+                        "secondary": "#006c44",
+                        "outline": "#717975",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#002112",
+                        "premium-gold": "#FFD966",
+                        "inverse-primary": "#a2d0bf",
+                        "primary": "#00241b",
+                        "inverse-on-surface": "#e1f6e9",
+                        "primary-container": "#0b3b2f",
+                        "on-primary-container": "#78a696",
+                        "surface-variant": "#d3e7db",
+                        "surface-dim": "#cbdfd3",
+                        "mint-mist": "#F4F9F6",
+                        "on-primary-fixed-variant": "#224e42",
+                        "inverse-surface": "#23342c",
+                        "on-secondary-fixed-variant": "#005232",
+                        "surface-tint": "#3b6759",
+                        "leaf-green": "#2E9E6B",
+                        "surface-container-high": "#d9ede1",
+                        "tertiary-container": "#caa83a",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#0e1f17",
+                        "on-tertiary-container": "#4e3d00",
+                        "surface": "#eafef2",
+                        "surface-bright": "#eafef2",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#e7c353",
+                        "surface-container": "#def3e6",
+                        "ink": "#061710",
+                        "secondary-fixed": "#8df8bd",
+                        "on-surface": "#0e1f17",
+                        "forest-slate": "#3C5A4F",
+                        "forest-deep": "#0B3B2F",
+                        "tertiary": "#735c00",
+                        "surface-container-highest": "#d3e7db",
+                        "on-surface-variant": "#414945",
+                        "secondary-container": "#8df8bd",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#a2d0bf",
+                        "tertiary-fixed": "#ffe088",
+                        "on-tertiary-fixed": "#241a00",
+                        "background": "#eafef2",
+                        "primary-fixed": "#bdeddb",
+                        "on-secondary-container": "#007349",
+                        "secondary-fixed-dim": "#71dba2",
+                        "outline-variant": "#c0c8c4",
+                        "surface-container-low": "#e4f9ec",
+                        "on-primary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding-mobile": "20px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "container-padding-desktop": "40px",
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "section-gap": "80px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["DM Sans"],
+                        "label-md": ["DM Sans"],
+                        "headline-md": ["Syne"],
+                        "body-md": ["DM Sans"],
+                        "headline-lg-mobile": ["Syne"],
+                        "subheading-italic": ["Fraunces"],
+                        "headline-lg": ["Syne"],
+                        "caption": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "1.1", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                        "subheading-italic": ["24px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "headline-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "caption": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #F4F9F6;
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            min-height: 100vh;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(46, 158, 107, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pill-gradient {
+            background: linear-gradient(135deg, #2E9E6B 0%, #0B3B2F 100%);
+        }
+        .gold-border {
+            border: 1px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #FFD966 0%, transparent 100%) border-box;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c0c8c4;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-40 flex justify-between items-center px-10 h-20 bg-surface/70 backdrop-blur-xl border-b border-outline-variant/10 shadow-sm">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold text-forest-deep">Flow</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Features</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Community</a>
+<a class="font-label-md text-label-md text-leaf-green font-bold border-b-2 border-leaf-green pb-1" href="#download-section">Download</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="font-label-md text-label-md text-forest-deep bg-premium-gold/30 px-4 py-2 rounded-full hover:bg-premium-gold/50 transition-colors" href="https://zimlive.app/#account-access">Sign in</a>
+<a class="font-label-md text-label-md bg-leaf-green text-white px-6 py-2.5 rounded-full hover:scale-95 transition-transform" href="https://zimlive.app/#account-access">Create account</a>
+</div>
+</header>
+<div class="pt-24 max-w-[1440px] mx-auto px-10 flex gap-gutter">
+<!-- Left Sidebar Navigation -->
+<aside class="w-64 flex flex-col gap-stack-md sticky top-24 h-[calc(100vh-120px)]">
+<nav class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-4 py-3 text-leaf-green font-bold bg-mint-mist rounded-xl border border-leaf-green/10">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-md text-label-md">Messaging</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-mint-mist rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+<span class="font-label-md text-label-md">Social Feed</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-mint-mist rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Flow Super-Wallet</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-mint-mist rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-label-md text-label-md">Business Hub</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-mint-mist rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-md text-label-md">FlowAI Assistant</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-mint-mist rounded-xl transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md">Community</span>
+</div>
+</nav>
+<!-- Bottom Promo Card -->
+<div class="mt-auto p-5 rounded-2xl gold-border bg-white shadow-sm flex flex-col gap-3">
+<div class="h-10 w-10 rounded-lg bg-premium-gold/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h4 class="font-label-md text-label-md text-forest-deep">Go Premium</h4>
+<p class="text-caption font-caption text-on-surface-variant">Unlock borderless transactions and 5% cashback.</p>
+</div>
+</aside>
+<!-- Center Stage: Social Feed & Download Section -->
+<main class="flex-1 flex flex-col gap-stack-lg max-w-2xl mx-auto">
+<!-- High-Visibility Download Section -->
+<section class="relative overflow-hidden p-8 rounded-3xl bg-forest-deep text-white shadow-2xl gold-border mb-4" id="download-section">
+<div class="absolute top-0 right-0 w-32 h-32 bg-leaf-green/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+<div class="flex-1 flex flex-col gap-4 text-center md:text-left">
+<h2 class="font-headline-md text-headline-md text-premium-gold leading-tight">Flow in Your Pocket</h2>
+<p class="font-body-md text-surface-variant/80">Experience the continent's most powerful ecosystem on the go. Faster, safer, and borderless.</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4 mt-2">
+<a class="h-12 w-40 bg-black rounded-lg border border-outline-variant/30 flex items-center justify-center gap-2 hover:bg-white/10 transition-colors" href="https://apps.apple.com/search?term=Flow%20O%27Riley%20Foundation" target="_blank" rel="noopener noreferrer">
+<img alt="App Store" class="h-full py-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAu289LgHE_4GxYGqn-YD8SxDZ7hERe9bwYHhLGL7rFsdUNtqad23VdmI7BvOnI-d43bxfqHk4I5825suKkNJujxu82uyRjIF6kW9JPjiLkzzyZkHGrV1lPCRq1Y7uwvJnbDjsNkOsJhEG7MuSWs5oTpPhuad2uoqAJZ5mSvLTZxkouZLBrgQso2v9rKm6zBwdi9yjNH8IpcWjgAHdGjYghHOn85VhzTMM_ItoBIq4nuWDoDi50tj6GLgu76b2Er1gxi0sNBZ_TNWsP">
+</a>
+<a class="h-12 w-40 bg-black rounded-lg border border-outline-variant/30 flex items-center justify-center gap-2 hover:bg-white/10 transition-colors" href="https://play.google.com/store/search?q=Flow%20O%27Riley%20Foundation&c=apps" target="_blank" rel="noopener noreferrer">
+<img alt="Google Play" class="h-full py-2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKkKZjKUwGnwiiza02mmbA5Q2Lw00xui1TgQPKGg3yUg6UfxGUFtAa0ROhh8dpfg30Qb5LrSxVZui5JvgICZCNWwa45rJd6SQ1chDeyKCShlURyDYzOfiZUz4O9JdSqze3hrbHcfdoP0lKiNMGjyWaJb5UiA2-k7Jhc63uwi72NLvyIw-Mm5K2zkL1wJAu211FOiEf0bu8IGekuK1FnqLtbx97raN8VUb81Yfaa9cT_LO39yAj-ZMtgnJaFGr812Mtyo3Uv9Wq8wBG">
+</a>
+</div>
+</div>
+<div class="flex flex-col items-center gap-3 p-4 bg-white rounded-2xl">
+<div class="w-32 h-32 bg-white flex items-center justify-center">
+<img alt="Download QR Code" class="w-full h-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRQ5KoD-3c6NpKHtWE457mneK91537Gjn_vtI-Wr9fzV6Vq-Hs_OYSEQWW2yucdV-wEkDLfZDd7npmNUz8ElQNV_p0sEP9wg3OKw8x8FWBt6AlanrdlxcPZHMPyFc0AbaAPjjRRFMIwU1ssaVbnMN0IBXt7Oqd8391_XZrjxM2xFH4j1HeqUwruhUdrE3Wn85Zsm0O586eX301jvYWTaGWpwhG8kdvfyeIQHwkHUkbfIBt1yA-1vDuML-HWKpy522R54Xchz_7GU4z">
+</div>
+<span class="text-caption font-bold text-forest-deep">Scan to Download</span>
+</div>
+</div>
+</section>
+<!-- Composer Box -->
+<div class="glass-panel p-stack-md rounded-2xl shadow-sm border border-outline-variant/10">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex-shrink-0 flex items-center justify-center font-bold text-on-secondary-container">JS</div>
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md resize-none py-2" placeholder="Share a moment... what's on your mind?"></textarea>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-outline-variant/5">
+<div class="flex gap-2">
+<button class="p-2 hover:bg-mint-mist rounded-full transition-colors text-leaf-green">
+<span class="material-symbols-outlined">image</span>
+</button>
+<button class="p-2 hover:bg-mint-mist rounded-full transition-colors text-leaf-green">
+<span class="material-symbols-outlined">sentiment_satisfied</span>
+</button>
+<button class="p-2 hover:bg-mint-mist rounded-full transition-colors text-leaf-green">
+<span class="material-symbols-outlined">location_on</span>
+</button>
+</div>
+<button class="bg-forest-deep text-white px-6 py-2 rounded-full font-label-md text-label-md hover:bg-leaf-green transition-colors">Publish</button>
+</div>
+</div>
+<!-- Feed Content -->
+<section class="flex flex-col gap-gutter">
+<!-- Post 1 -->
+<article class="bg-white p-stack-lg rounded-2xl border border-outline-variant/10 shadow-sm hover:shadow-md transition-shadow group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center font-bold text-forest-deep">S</div>
+<div>
+<h3 class="font-label-md text-label-md text-forest-deep">Samantha</h3>
+<p class="text-caption font-caption text-on-surface-variant">2h ago • Harare</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer group-hover:text-on-surface">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md mb-4">Just loaded my Flow wallet via WorldRemit! 🚀 The speed is insane, ready for some local business shopping today.</p>
+<div class="rounded-xl overflow-hidden mb-4 border border-outline-variant/10">
+<img class="w-full h-64 object-cover" data-alt="A vibrant, close-up lifestyle shot of a sleek smartphone displaying a modern digital wallet app interface with green and gold accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPlph3Xtb2bLRKQb9YVn8IynnxhdzHn7X2ILI-U6yU_Q8a4HzyexRuiSPTBdVwVB2Bs12uRWluLxsN2U2EFMeFcoI5xKbYBhAnadNoDnREvdoo_DgjfNDENhgZ02G4kGJkBwxzjSS3oMZJWzY0j-SQSo5pKbFJopOHARJKwDu4FpkbN6uWhT-mPXG8CnonA2qHx1S-b3Y803a-XDHj9u_pRhwk06VhGcXmMjFPcG2rR7CWO9brNASYseZ8QpdVRWmoGwkgH-fQUNps">
+</div>
+<div class="flex items-center gap-6 text-on-surface-variant font-label-md text-label-md">
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span> 14
+                    </button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span> Reply
+                    </button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors ml-auto">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="bg-white p-stack-lg rounded-2xl border border-outline-variant/10 shadow-sm group">
+<div class="flex justify-between items-start mb-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-full bg-leaf-green/20 flex items-center justify-center font-bold text-leaf-green">T</div>
+<div>
+<h3 class="font-label-md text-label-md text-forest-deep">Tinashe</h3>
+<p class="text-caption font-caption text-on-surface-variant">5h ago • Gweru</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant cursor-pointer">more_horiz</span>
+</div>
+<p class="font-body-md text-body-md mb-4">Looking for a solar kit in Gweru. Any leads from the community? Need something for a 3-bedroom house. ☀️🏡</p>
+<div class="flex items-center gap-6 text-on-surface-variant font-label-md text-label-md">
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined text-[20px]">favorite</span> 23
+                    </button>
+<button class="flex items-center gap-1.5 hover:text-leaf-green transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span> Reply
+                    </button>
+</div>
+</article>
+</section>
+</main>
+<!-- Right Sidebar: Widgets -->
+<aside class="w-80 flex flex-col gap-stack-lg sticky top-24 h-[calc(100vh-120px)]">
+<!-- Super-Wallet Widget -->
+<div class="glass-panel p-stack-lg rounded-2xl shadow-xl flex flex-col gap-4 border-l-4 border-l-leaf-green">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Super-Wallet</span>
+<span class="material-symbols-outlined text-leaf-green" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="font-headline-md text-[32px] text-forest-deep">240 L.C.</h2>
+<p class="text-caption font-caption text-on-secondary-fixed-variant">+12% from last month</p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-leaf-green text-white py-2 rounded-xl text-caption font-bold hover:opacity-90 transition-opacity">Send</button>
+<button class="flex-1 border border-leaf-green text-leaf-green py-2 rounded-xl text-caption font-bold hover:bg-mint-mist transition-colors">Receive</button>
+</div>
+</div>
+<!-- ZimAI Assistant Panel -->
+<div class="flex-1 glass-panel p-stack-lg rounded-2xl flex flex-col gap-4 overflow-hidden relative">
+<div class="flex items-center gap-3 border-b border-outline-variant/10 pb-4">
+<div class="w-10 h-10 rounded-full bg-forest-deep flex items-center justify-center text-surface-bright">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-forest-deep">FlowAI Assistant</h4>
+<p class="text-caption font-caption text-on-surface-variant">Powered by Gemini</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<div class="bg-surface-container-low p-3 rounded-tr-xl rounded-bl-xl rounded-br-xl max-w-[85%] self-start">
+<p class="text-caption font-caption text-forest-deep">How can I help you manage your Unified Life today?</p>
+</div>
+<div class="bg-leaf-green text-white p-3 rounded-tl-xl rounded-bl-xl rounded-br-xl max-w-[85%] self-end">
+<p class="text-caption font-caption">Show my spending on the Business Hub this week.</p>
+</div>
+</div>
+<div class="relative mt-auto">
+<input class="w-full bg-white border border-outline-variant/20 rounded-full py-3 px-5 pr-12 text-caption focus:ring-2 focus:ring-leaf-green/20 focus:border-leaf-green outline-none" placeholder="Ask FlowAI..." type="text">
+<button class="absolute right-2 top-1.5 p-1.5 bg-leaf-green text-white rounded-full hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+<!-- Beta Registration Modal -->
+<div class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4" id="betaModal">
+<div class="absolute inset-0 bg-forest-deep/40 backdrop-blur-md" onclick="closeModal()"></div>
+<div class="relative w-full max-w-md glass-panel p-10 rounded-[32px] shadow-2xl border-2 border-leaf-green/20">
+<button class="absolute top-6 right-6 text-on-surface-variant hover:text-forest-deep transition-colors" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div id="modalContent">
+<div class="flex flex-col gap-4 mb-8">
+<h3 class="font-headline-md text-[32px] text-forest-deep leading-tight">Join the Inner Circle</h3>
+<p class="font-body-md text-on-surface-variant">Secure your spot in the Flow Beta. Be the first to experience borderless payments and unified living.</p>
+</div>
+<form class="flex flex-col gap-5" id="betaForm" onsubmit="handleBetaSubmit(event)">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-forest-deep ml-1">Full Name</label>
+<input class="w-full px-5 py-4 rounded-2xl border border-outline-variant/30 focus:ring-2 focus:ring-leaf-green/20 focus:border-leaf-green outline-none font-body-md" placeholder="John Doe" required="" type="text">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-forest-deep ml-1">Email Address</label>
+<input class="w-full px-5 py-4 rounded-2xl border border-outline-variant/30 focus:ring-2 focus:ring-leaf-green/20 focus:border-leaf-green outline-none font-body-md" placeholder="john@example.com" required="" type="email">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-forest-deep ml-1">Phone Number</label>
+<input class="w-full px-5 py-4 rounded-2xl border border-outline-variant/30 focus:ring-2 focus:ring-leaf-green/20 focus:border-leaf-green outline-none font-body-md" placeholder="+263 ..." required="" type="tel">
+</div>
+<button class="w-full mt-2 bg-leaf-green text-white font-label-md py-5 rounded-2xl hover:scale-[0.98] transition-transform shadow-lg shadow-leaf-green/20" type="submit">Apply for Beta Access</button>
+<p class="text-[10px] text-center text-on-surface-variant opacity-60">By joining, you agree to our Terms of Service.</p>
+</form>
+</div>
+<div class="hidden flex flex-col items-center justify-center py-8 text-center" id="successContent">
+<div class="w-24 h-24 rounded-full bg-leaf-green/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-[48px] text-leaf-green" style="font-variation-settings: 'FILL' 1, 'wght' 700;">check_circle</span>
+</div>
+<h3 class="font-headline-md text-3xl text-forest-deep mb-4">You're on the list!</h3>
+<p class="font-body-md text-on-surface-variant px-4">Thank you for joining the Flow Beta program. We'll reach out to you via email once your account is ready for activation.</p>
+<button class="mt-8 text-leaf-green font-bold hover:underline" onclick="closeModal()">Back to Dashboard</button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-16 px-10 flex flex-col items-center gap-8 bg-mint-mist mt-section-gap border-t border-outline-variant/20">
+<span class="font-headline-md text-headline-md text-forest-deep">Flow</span>
+<div class="flex gap-8">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Legal</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-leaf-green transition-colors" href="#">Contact</a>
+</div>
+<p class="text-caption font-caption text-on-surface-variant opacity-80">together we are Flow. Powered by O'Riley Foundation © 2026</p>
+</footer>
+<script>
+    // Modal Logic
+    function openModal() {
+        const modal = document.getElementById('betaModal');
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('betaModal');
+        modal.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+        // Reset success state if needed for next open
+        setTimeout(() => {
+            document.getElementById('modalContent').classList.remove('hidden');
+            document.getElementById('successContent').classList.add('hidden');
+        }, 300);
+    }
+
+    function handleBetaSubmit(event) {
+        event.preventDefault();
+        document.getElementById('modalContent').classList.add('hidden');
+        document.getElementById('successContent').classList.remove('hidden');
+    }
+
+    // Auto-trigger modal after scroll (only once)
+    let modalTriggered = false;
+    window.addEventListener('scroll', () => {
+        if (!modalTriggered && window.scrollY > 500) {
+            openModal();
+            modalTriggered = true;
+        }
+    });
+
+    // Hover micro-interactions
+    document.addEventListener('mousemove', (e) => {
+        const panels = document.querySelectorAll('.glass-panel');
+        const x = (window.innerWidth / 2 - e.pageX) / 100;
+        const y = (window.innerHeight / 2 - e.pageY) / 100;
+        
+        panels.forEach(panel => {
+            if (!panel.closest('#betaModal')) { // Don't move the modal with mouse
+                panel.style.transform = `translate(${x}px, ${y}px)`;
+            }
+        });
+    });
+</script>
+
+
+
+
+</body></html>
