@@ -30,6 +30,6 @@ Use the forest and pine colors for text on pale surfaces. Reserve bright mint an
 
 ## Website constraints
 
-The public product page is a lightweight static site with `index.html`, `styles/site.css`, and `scripts/site.js`. It has no framework runtime, analytics, tracking pixels, third-party fonts, or remote images. Keep JavaScript limited to progressive enhancement and preserve usable navigation when it is unavailable. Links should lead to real sections or the O’Riley Foundation site; do not add forms or app-store links until the destinations and services exist.
+The public product page is a lightweight static site with `index.html`, standalone CSS, and small JavaScript modules for navigation and Firebase email-account flows. It has no framework runtime, analytics, tracking pixels, third-party fonts, or remote images. Keep progressive enhancements accessible and ensure account inputs stay disabled until Firebase is configured. The Android and iOS buttons lead to app-store search pages until exact published listing links are available.
 
-Product examples and platform descriptions must match the project repositories. Label mock interface art as illustrative, avoid invented user or transaction counts, and state when an activity remains local demo data. The existing `zimlive.app` canonical and sitemap host are retained until the owner selects and configures a Flow domain.
+Product examples and platform descriptions must match the project repositories. Label mock interface art as illustrative, avoid invented user or transaction counts, and state when an activity remains local demo data. Use the owner's current `zimlive.app` apex host for canonical and sitemap URLs unless the domain configuration changes.

@@ -90,11 +90,52 @@
 
     .status-section { background: var(--white); }
     .status-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    .status-card { padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--canvas); }
+    .status-card { display: flex; flex-direction: column; align-items: flex-start; padding: 22px; border: 1px solid var(--line); border-radius: 18px; background: var(--canvas); }
     .status-label { display: inline-flex; align-items: center; gap: 8px; color: var(--pine); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
     .status-label::before { width: 7px; height: 7px; border-radius: 50%; background: var(--emerald); content: ""; }
     .status-card h3 { margin: 17px 0 8px; color: var(--forest); font-size: 20px; letter-spacing: -.04em; }
     .status-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.65; }
+    .store-link { display: inline-flex; min-height: 48px; align-items: center; gap: 10px; margin-top: auto; padding: 10px 13px 0 0; color: var(--forest); text-decoration: none; }
+    .store-link svg { width: 27px; height: 27px; flex: 0 0 auto; }
+    .store-link span { display: grid; gap: 2px; }
+    .store-link small { color: #66736c; font-size: 8px; font-weight: 700; letter-spacing: .11em; }
+    .store-link strong { font-size: 15px; letter-spacing: -.025em; }
+    .store-link b { margin-left: 8px; font-size: 12px; }
+    .store-link:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+    .status-card .store-note { margin: 5px 0 0; color: #77827b; font-size: 10px; line-height: 1.45; }
+    .platform-account-link { min-height: 40px; margin-top: auto; padding-inline: 14px; font-size: 11px; }
+    .account-access { display: grid; grid-template-columns: minmax(0, .9fr) minmax(300px, 1.1fr); gap: clamp(25px, 5vw, 58px); margin-top: 28px; padding: clamp(23px, 4vw, 38px); border: 1px solid var(--line); border-radius: 22px; background: var(--canvas); scroll-margin-top: 100px; }
+    .account-intro .kicker { margin-bottom: 11px; }
+    .account-intro h3 { max-width: 400px; margin: 0; color: var(--forest); font-size: clamp(26px, 3.5vw, 38px); line-height: 1.05; letter-spacing: -.05em; }
+    .account-intro > p:not(.kicker) { margin: 12px 0 18px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .account-config-note { display: block; border-left: 2px solid #c5a66c; padding: 8px 0 8px 11px; color: #6c624f; font-size: 11px; line-height: 1.5; }
+    .account-content { min-width: 0; border: 1px solid #e5ece8; border-radius: 16px; padding: 17px; background: var(--white); }
+    .account-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; border-radius: 11px; padding: 4px; background: #f0f5f2; }
+    .account-tab { min-height: 38px; border: 0; border-radius: 8px; padding: 8px 12px; background: transparent; color: #5f6d65; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .account-tab:hover { background: rgb(255 255 255 / 60%); }
+    .account-tab.is-active { background: var(--white); color: var(--forest); box-shadow: 0 1px 5px rgb(11 59 47 / 8%); }
+    .account-tab:focus-visible, .account-content button:focus-visible, .account-content input:focus-visible { outline: 3px solid var(--emerald); outline-offset: 2px; }
+    .account-form { display: grid; gap: 11px; margin-top: 16px; }
+    .account-form fieldset { display: grid; min-width: 0; gap: 9px; margin: 0; border: 0; padding: 0; }
+    .account-form fieldset:disabled { opacity: .62; }
+    .account-form label { margin-top: 3px; color: #48564e; font-size: 11px; font-weight: 700; }
+    .account-form input { width: 100%; min-height: 42px; border: 1px solid #cbd9d1; border-radius: 10px; padding: 10px 12px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; }
+    .account-form input:disabled { background: #f6f8f6; color: #808b84; }
+    .account-form .button { width: 100%; min-height: 43px; margin-top: 5px; font: inherit; font-size: 12px; cursor: pointer; }
+    .account-form .button:disabled, .account-content button:disabled { cursor: not-allowed; opacity: .56; transform: none; }
+    .password-hint { color: #7b877f; font-size: 10px; line-height: 1.5; }
+    .text-link { width: fit-content; border: 0; padding: 1px 0; background: transparent; color: var(--pine); font: inherit; font-size: 11px; font-weight: 700; cursor: pointer; }
+    .text-link:hover { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+    .account-status { min-height: 19px; margin: 12px 0 0; color: #306544; font-size: 11px; line-height: 1.5; }
+    .account-status[data-state="error"] { color: #9a342a; }
+    .account-signed-in h4 { margin: 7px 0; color: var(--forest); font-size: 17px; overflow-wrap: anywhere; }
+    .account-signed-in > p:not(.account-state-label) { margin: 0; color: #65736a; font-size: 12px; line-height: 1.55; }
+    .account-state-label { margin: 2px 0 0; color: var(--pine); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+    .account-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .account-actions .button { min-height: 39px; padding-inline: 14px; font-size: 11px; cursor: pointer; }
+    .account-actions .secondary { border: 1px solid var(--line); }
+    .reset-form { padding-top: 2px; }
+    [hidden] { display: none !important; }
     .trust-note { display: grid; grid-template-columns: auto 1fr; gap: 15px; margin-top: 19px; padding: 21px; border-radius: 17px; background: var(--forest); color: white; }
     .trust-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgb(108 248 187 / 45%); border-radius: 50%; color: var(--mint-bright); font-weight: 800; }
     .trust-note p { margin: 0; color: rgb(255 255 255 / 85%); font-size: 13px; line-height: 1.65; }
@@ -130,6 +171,7 @@
       .hero-copy { font-size: 16px; }
       .preview-card { width: min(100%, 400px); transform: none; }
       .feature-grid, .status-grid { grid-template-columns: 1fr; }
+      .account-access { grid-template-columns: 1fr; gap: 22px; }
       .feature { min-height: 0; }
       .feature h3 { margin-top: 17px; }
       .closing-inner, .footer-row { align-items: flex-start; flex-direction: column; }

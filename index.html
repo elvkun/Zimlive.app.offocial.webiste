@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7faf8">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://www.gstatic.com; style-src 'self'; img-src 'self'; font-src 'self'; connect-src https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://www.googleapis.com https://firebaseinstallations.googleapis.com; object-src 'none'; base-uri 'self'; form-action 'none'; frame-src https://*.firebaseapp.com https://*.web.app; upgrade-insecure-requests">
   <meta name="description" content="Explore Flow, a cross-platform product bringing community, communication, and local commerce into one considered experience.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Flow — Ideas in motion">
   <meta property="og:description" content="Flow brings community, communication, and local commerce together across Android, iOS, and the web.">
-  <meta property="og:url" content="https://www.zimlive.app/">
-  <meta property="og:image" content="https://www.zimlive.app/social-preview.svg">
-  <link rel="canonical" href="https://www.zimlive.app/">
+  <meta property="og:url" content="https://zimlive.app/">
+  <meta property="og:image" content="https://zimlive.app/social-preview.svg">
+  <link rel="canonical" href="https://zimlive.app/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Flow — Ideas in motion</title>
   <link rel="stylesheet" href="/styles/site.css">
@@ -31,7 +31,7 @@
         <a href="#platforms">Platforms</a>
         <a href="#trust">What is live</a>
       </nav>
-      <a class="nav-cta" href="https://zimlive-app-offocial-webiste.vercel.app/" target="_blank" rel="noopener noreferrer">Open Flow web app <span aria-hidden="true">↗</span></a>
+      <a class="nav-cta" href="#account-access">Sign in / Create account <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
@@ -43,7 +43,7 @@
           <h1 id="hero-title">Good ideas deserve room to move.</h1>
           <p class="hero-copy">Flow brings community, communication, and local commerce into one considered experience. Use the browser account and listing tools wherever Flow services are configured.</p>
           <div class="hero-actions">
-            <a class="button" href="https://zimlive-app-offocial-webiste.vercel.app/" target="_blank" rel="noopener noreferrer">Open Flow web app <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button" href="#account-access">Open Flow web app <span aria-hidden="true">&nbsp;↗</span></a>
             <a class="button secondary" href="#platforms">See all platforms</a>
             <a class="button secondary" href="https://www.orileyplatforms.com/">About O’Riley Foundation</a>
           </div>
@@ -85,10 +85,35 @@
           <p class="section-intro">Flow keeps a familiar identity across mobile and web. Here is what each platform currently offers.</p>
         </div>
         <div class="status-grid">
-          <article class="status-card"><span class="status-label">Android · Mobile app</span><h3>The fullest interface today.</h3><p>A multi-screen Compose app with settings and a device-local app gate. Community, messaging, marketplace, and wallet examples use local data.</p></article>
-          <article class="status-card"><span class="status-label">iOS · Mobile app</span><h3>A native introduction.</h3><p>A SwiftUI welcome experience for Flow. Account, shared data, and service integrations are not available yet.</p></article>
-          <article class="status-card"><span class="status-label">Web · Browser app</span><h3>Use Flow from a browser.</h3><p>Create an account, manage your profile, save private listing drafts, submit reports, and discover published listings when Firebase is configured.</p></article>
+          <article class="status-card"><span class="status-label">Android · Mobile app</span><h3>The fullest interface today.</h3><p>A multi-screen Compose app with settings and a device-local app gate. Community, messaging, marketplace, and wallet examples use local data.</p><a class="store-link" href="https://play.google.com/store/search?q=Flow%20O%27Riley%20Foundation&amp;c=apps" target="_blank" rel="noopener noreferrer" aria-label="Find Flow on Google Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3.7 2.8c-.4.4-.7 1-.7 1.8v14.8c0 .8.3 1.4.7 1.8l8.4-9.1L3.7 2.8Zm1.4-.8 9.1 8 2.4-2.6L6.1 1.8c-.4-.2-.7-.1-1 .2Zm0 20c.3.2.7.3 1 .1l10.5-5.7-2.4-2.6-9.1 8.2Zm12.9-6.4 2.6-1.4c.9-.5.9-1.3 0-1.8L18 11l-2.6 2.8 2.6 2.8Z"/></svg><span><small>GET IT ON</small><strong>Google Play</strong></span><b aria-hidden="true">↗</b></a><p class="store-note">Search the store for Flow. If no listing is available yet, results may be empty.</p></article>
+          <article class="status-card"><span class="status-label">iOS · Mobile app</span><h3>A native introduction.</h3><p>A SwiftUI welcome experience for Flow. Account, shared data, and service integrations are not available yet.</p><a class="store-link" href="https://apps.apple.com/search?term=Flow%20O%27Riley%20Foundation" target="_blank" rel="noopener noreferrer" aria-label="Find Flow on the Apple App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.8c0-2.1 1.7-3.1 1.8-3.2-1-1.5-2.6-1.7-3.2-1.7-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-2.9.9-3.7 2.2-1.6 2.7-.4 6.7 1.2 8.9.8 1.1 1.7 2.3 2.9 2.3 1.2-.1 1.7-.7 3.1-.7s1.8.7 3.1.7c1.3 0 2.1-1.1 2.9-2.2.9-1.2 1.2-2.4 1.2-2.5-.1 0-2.8-1.1-2.8-3.9Zm-2.3-6.4c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3Z"/></svg><span><small>DOWNLOAD ON THE</small><strong>App Store</strong></span><b aria-hidden="true">↗</b></a><p class="store-note">Search the store for Flow. If no listing is available yet, results may be empty.</p></article>
+          <article class="status-card"><span class="status-label">Web · Browser app</span><h3>Use Flow from a browser.</h3><p>Create an account, sign in, manage your profile, save private listing drafts, submit reports, and discover published listings when Firebase is configured.</p><a class="button platform-account-link" href="#account-access">Sign in or create account <span aria-hidden="true">↗</span></a></article>
         </div>
+        <section class="account-access" id="account-access" aria-labelledby="account-title">
+          <div class="account-intro"><p class="kicker">Your Flow account</p><h3 id="account-title">Welcome back. Or start fresh.</h3><p>Sign in or create your Flow account here. You’ll stay on zimlive.app.</p><span class="account-config-note" id="account-config-note">Account access is being connected. Do not enter your password until setup is complete.</span></div>
+          <div class="account-content">
+            <div class="account-signed-in" id="account-signed-in" hidden>
+              <p class="account-state-label">YOU’RE SIGNED IN</p><h4 id="account-user-email"></h4><p id="account-verification-state"></p>
+              <div class="account-actions"><button class="button" type="button" id="account-resend-verification" hidden>Resend verification email</button><button class="button secondary" type="button" id="account-sign-out">Sign out</button></div>
+            </div>
+            <div id="account-forms">
+              <div class="account-tabs" role="tablist" aria-label="Account options">
+                <button class="account-tab is-active" id="tab-sign-in" type="button" role="tab" aria-selected="true" aria-controls="form-sign-in" data-account-tab="sign-in">Sign in</button>
+                <button class="account-tab" id="tab-create" type="button" role="tab" aria-selected="false" aria-controls="form-create" data-account-tab="create">Create account</button>
+              </div>
+              <form class="account-form" id="form-sign-in" role="tabpanel" aria-labelledby="tab-sign-in" data-account-panel="sign-in">
+                <fieldset data-auth-fields disabled><label for="sign-in-email">Email address</label><input id="sign-in-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="sign-in-password">Password</label><input id="sign-in-password" name="password" type="password" autocomplete="current-password" maxlength="128" required><button class="button" type="submit">Sign in</button></fieldset>
+                <button class="text-link" id="forgot-password" type="button" disabled>Forgot your password?</button>
+              </form>
+              <form class="account-form" id="form-create" role="tabpanel" aria-labelledby="tab-create" data-account-panel="create" hidden>
+                <fieldset data-auth-fields disabled><label for="create-email">Email address</label><input id="create-email" name="email" type="email" autocomplete="email" maxlength="254" required><label for="create-password">Create password</label><input id="create-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" aria-describedby="password-hint" required><small class="password-hint" id="password-hint">Use at least 12 characters. We’ll email a link to verify your address.</small><button class="button" type="submit">Create account</button></fieldset>
+              </form>
+              <form class="account-form reset-form" id="form-reset-request" hidden><label for="reset-email">Email address</label><input id="reset-email" name="email" type="email" autocomplete="email" maxlength="254" required><button class="button" type="submit">Send password reset link</button><button class="text-link" id="back-to-sign-in" type="button">Back to sign in</button></form>
+              <form class="account-form reset-form" id="form-reset" hidden><label for="reset-password">New password</label><input id="reset-password" name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required><button class="button" type="submit">Update password</button></form>
+            </div>
+            <p class="account-status" id="account-status" role="status" aria-live="polite"></p>
+          </div>
+        </section>
         <div class="trust-note" id="trust"><span class="trust-mark" aria-hidden="true">i</span><p><strong>Clear about what is live.</strong> Payments, transfers, identity verification, messaging, and AI services are not available. Android example balances, profiles, ratings, and activity are local demonstration data, not verified information. Browser account and listing tools require configured Firebase services; listings remain private drafts unless published by an authorized service. Saved report records stay private and do not reach a support team.</p></div>
       </div>
     </section>
@@ -111,5 +136,7 @@
     </div>
   </footer>
   <script type="module" src="/scripts/site.js"></script>
+  <script type="application/json" id="flow-firebase-config">{"apiKey":"","authDomain":"","projectId":"","appId":""}</script>
+  <script type="module" src="/scripts/account.js"></script>
 </body>
 </html>
