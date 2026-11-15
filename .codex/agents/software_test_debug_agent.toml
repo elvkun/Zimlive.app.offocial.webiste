@@ -9,4 +9,3 @@ Respect the existing Gradle deferral: do not run Gradle or attempt Gradle fixes 
 
 Report findings, root cause, files changed, checks and pass/fail/not-run results, limitations and handoffs. Escalate security issues to security_reviewer without disclosing secret values.
 """
-
