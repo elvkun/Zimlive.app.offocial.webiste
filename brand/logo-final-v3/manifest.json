@@ -1,0 +1,122 @@
+[
+  {
+    "file": "flow/flow-horizontal.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "horizontal",
+    "png_dimensions": [
+      778,
+      360
+    ]
+  },
+  {
+    "file": "flow/flow-horizontal-reversed.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "horizontal-reversed",
+    "png_dimensions": [
+      778,
+      360
+    ]
+  },
+  {
+    "file": "flow/flow-stacked.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "stacked",
+    "png_dimensions": [
+      2160,
+      2160
+    ]
+  },
+  {
+    "file": "flow/flow-profile-1024.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "profile-1024",
+    "png_dimensions": [
+      1024,
+      1024
+    ]
+  },
+  {
+    "file": "flow/flow-profile-512.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "profile-512",
+    "png_dimensions": [
+      512,
+      512
+    ]
+  },
+  {
+    "file": "flow/flow-social-cover.svg",
+    "brand": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "social-cover",
+    "png_dimensions": [
+      3200,
+      1800
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-horizontal.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal",
+    "png_dimensions": [
+      1382,
+      360
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-horizontal-reversed.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal-reversed",
+    "png_dimensions": [
+      1382,
+      360
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-stacked.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "stacked",
+    "png_dimensions": [
+      2160,
+      2160
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-profile-1024.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "profile-1024",
+    "png_dimensions": [
+      1024,
+      1024
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-profile-512.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "profile-512",
+    "png_dimensions": [
+      512,
+      512
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-social-cover.svg",
+    "brand": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "social-cover",
+    "png_dimensions": [
+      3200,
+      1800
+    ]
+  }
+]

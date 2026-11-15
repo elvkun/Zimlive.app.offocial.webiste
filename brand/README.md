@@ -1,3 +1,5 @@
-# Reusable brand assets
+# Current reusable branding
 
-Current set: [Website-aligned logos with embedded taglines](logo-taglines-v2/README.md). [Preview](logo-taglines-v2/preview.html). Earlier logo-concepts-2026-11-15 assets are archived concepts.
+Use [Final logos v3](logo-final-v3/README.md) and [preview](logo-final-v3/preview.html).
+
+Approved identities: F / Flow / IDEAS IN MOTION and O / O’Riley Foundation / PRODUCTS WITH PURPOSE. Earlier v1/v2 files, including the O’Riley Platforms-named alternate, are archived history.
