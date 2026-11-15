@@ -1,0 +1,92 @@
+[
+  {
+    "file": "flow/flow-horizontal-tagline-v2.svg",
+    "name": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "horizontal",
+    "png_size": [
+      992,
+      480
+    ]
+  },
+  {
+    "file": "flow/flow-horizontal-reversed-tagline-v2.svg",
+    "name": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "horizontal-reversed",
+    "png_size": [
+      992,
+      480
+    ]
+  },
+  {
+    "file": "flow/flow-stacked-tagline-v2.svg",
+    "name": "Flow",
+    "tagline": "IDEAS IN MOTION",
+    "variant": "stacked",
+    "png_size": [
+      760,
+      860
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-horizontal-tagline-v2.svg",
+    "name": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal",
+    "png_size": [
+      1978,
+      480
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-horizontal-reversed-tagline-v2.svg",
+    "name": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal-reversed",
+    "png_size": [
+      1978,
+      480
+    ]
+  },
+  {
+    "file": "oriley-foundation/oriley-foundation-stacked-tagline-v2.svg",
+    "name": "O\u2019Riley Foundation",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "stacked",
+    "png_size": [
+      1674,
+      860
+    ]
+  },
+  {
+    "file": "oriley-platforms/oriley-platforms-horizontal-tagline-v2.svg",
+    "name": "O\u2019Riley Platforms",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal",
+    "png_size": [
+      1854,
+      480
+    ]
+  },
+  {
+    "file": "oriley-platforms/oriley-platforms-horizontal-reversed-tagline-v2.svg",
+    "name": "O\u2019Riley Platforms",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "horizontal-reversed",
+    "png_size": [
+      1854,
+      480
+    ]
+  },
+  {
+    "file": "oriley-platforms/oriley-platforms-stacked-tagline-v2.svg",
+    "name": "O\u2019Riley Platforms",
+    "tagline": "PRODUCTS WITH PURPOSE",
+    "variant": "stacked",
+    "png_size": [
+      1550,
+      860
+    ]
+  }
+]
